@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-family: 'Inter', sans-serif;
+  --font-family-secondary: 'Montserrat', sans-serif;
+  --font-family-tertiary: 'Nunito', sans-serif;
+  
+  --color-primary: #FF6600;
+  --color-secondary: #06B94B;
+  --color-dark: #042940;
+  --color-dark-green:#026773;
+  --color-danger: #F23030;
+  --color-warning: ##F28705;
+  --color-success: #06B94B;
+  --color-gray-100: #f4f4f4;
+  --color-gray-200: #EAEAEA;
+  --color-gray-300: #cccccc;
+  --color-gray-900: #4c4c4c4c;
+
+  --radius-xl: .625rem;/*10px*/
+  --w-15: 3.75rem;/*60px*/
+  --h-15: 3.75rem;/*60px*/
+
+    --container-max-width: 1660px;
+}
+
+#auth-image-container {
+  background-image: url('/public/assets/auth_background.jpg');
+}
