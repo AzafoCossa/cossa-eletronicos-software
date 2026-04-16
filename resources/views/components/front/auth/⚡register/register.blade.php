@@ -15,30 +15,34 @@
           <h1 class="text-center text-6xl text-dark font-black">Seja bem-vindo</h1>
           <p class="text-center text-2xl mt-2">Registe-se e comece as tuas compras, hoje.</p>
 
-          <form action="#" class="w-full flex flex-col gap-10 mt-20 text-2xl text-dark/70">
+          <form wire:submit.prevent="register" class="w-full flex flex-col gap-10 mt-20 text-2xl text-dark/70" autocomplete="off">
             <div class="flex flex-col gap-2.5">
               <label for="full_name">Nome completo</label>
-              <input type="text" id="full_name" placeholder="Digite o seu nome completo" class="bg-gray-200 rounded-xl py-4 px-6">
+              <input wire:model="userForm.full_name" type="text" id="full_name" placeholder="Digite o seu nome completo" class="bg-gray-200 rounded-xl py-4 px-6">
+              <div>@error('userForm.full_name') {{ $message }} @enderror</div>
             </div>
 
             <div class="flex flex-col gap-2.5">
               <label for="full_name">Email / Celular</label>
-              <input type="text" id="email_or_phone" placeholder="Digite o seu ou numero de celular" class="bg-gray-200 rounded-xl py-4 px-6">
+              <input wire:model="userForm.email_or_phone" type="text" id="email_or_phone" placeholder="Digite o seu ou numero de celular" class="bg-gray-200 rounded-xl py-4 px-6">
+              <div>@error('userForm.email_or_phone') {{ $message }} @enderror</div>
             </div>
 
             <div class="flex flex-col gap-2.5">
               <label for="full_name">Password</label>
-              <input type="text" id="password" placeholder="Digite uma password" class="bg-gray-200 rounded-xl py-4 px-6">
+              <input wire:model="userForm.password" type="password" id="password" placeholder="Digite uma password" class="bg-gray-200 rounded-xl py-4 px-6">
+              <div>@error('userForm.password') {{ $message }} @enderror</div>
             </div>
 
             <div class="flex flex-col gap-2.5">
               <label for="full_name">Confirmacao de password</label>
-              <input type="text" id="password_confirm" placeholder="Digite novamente a password" class="bg-gray-200 rounded-xl py-4 px-6">
+              <input wire:model="userForm.password_confirmation" type="password" id="password_confirm" placeholder="Digite novamente a password" class="bg-gray-200 rounded-xl py-4 px-6">
+              <div>@error('userForm.password') {{ $message }} @enderror</div>
             </div>
 
-            <button class="bg-primary rounded-xl py-4 text-white">Registar</button>
+            <button type="submit" class="bg-primary rounded-xl py-4 text-white">Registar</button>
 
-            <p class="text-center text-gray-500">Já tem uma conta? <a href="./login.html" class="text-primary">Iniciar sessao.</a></p>
+            <p class="text-center text-gray-500">Já tem uma conta? <a href="{{ route('login') }}" class="text-primary">Iniciar sessao.</a></p>
           </form>
         </div>
       </div>
