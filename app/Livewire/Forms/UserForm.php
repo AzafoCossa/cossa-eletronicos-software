@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
+use Spatie\Permission\Models\Role;
 
 class UserForm extends Form
 {
@@ -28,7 +29,7 @@ class UserForm extends Form
         ]);
 
         $exists = UserIdentifier::where('value', $this->email_or_phone)
-        ->orWhere('value', $this->addPhoneprefix($this->email_or_phone))
+        ->orWhere('value', addPhonePrefix($this->email_or_phone))
         ->exists();
 
         if ($exists) {
@@ -46,16 +47,18 @@ class UserForm extends Form
                 $user->password = Hash::make($this->password);
                 $user->save();
 
+                $user->assignRole('Customer');
+
                 $user_identifier = new UserIdentifier();
                 $user_identifier->user_id = $user->id;
-                if ($this->isEmail($this->email_or_phone)) {
+                if (isEmail($this->email_or_phone)) {
                     $user_identifier->user_identifier_type_id = $user_identifier_types->where('name', 'email')->first()->id;
                     $user_identifier->value = $this->email_or_phone;
                 }
 
                 if (isPhone($this->email_or_phone)) {
                     $user_identifier->user_identifier_type_id = $user_identifier_types->where('name', 'phone')->first()->id;
-                    $user_identifier->value = $this->addPhoneprefix($this->email_or_phone);
+                    $user_identifier->value = addPhonePrefix($this->email_or_phone);
                 }
                 $user_identifier->save();
             });
@@ -66,21 +69,5 @@ class UserForm extends Form
             
             return false;
         }
-    }
-
-    private function isEmail(string $value): bool
-    {
-        return filter_var($value, FILTER_VALIDATE_EMAIL) !== false;
-    }
-
-    private function addPhoneprefix($value){
-        $prefix = '+258';
-
-        if (substr($value, 0, strlen($prefix)) !== $prefix) {
-            return $prefix . $value;
-        }
-
-        return $value;
-
     }
 }
