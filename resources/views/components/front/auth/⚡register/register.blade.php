@@ -18,26 +18,23 @@
           <form wire:submit.prevent="register" class="w-full flex flex-col gap-10 mt-20 text-2xl text-dark/70" autocomplete="off">
             <div class="flex flex-col gap-2.5">
               <label for="full_name">Nome completo</label>
-              <input wire:model="userForm.full_name" type="text" id="full_name" placeholder="Digite o seu nome completo" class="bg-gray-200 rounded-xl py-4 px-6">
-              <div>@error('userForm.full_name') {{ $message }} @enderror</div>
+              <input wire:model="userForm.full_name" type="text" id="full_name" placeholder="Digite o seu nome completo" class="bg-gray-200 rounded-xl py-4 px-6 @error('userForm.full_name') border-2 border-red-500 @enderror">
             </div>
 
             <div class="flex flex-col gap-2.5">
               <label for="full_name">Email / Celular</label>
-              <input wire:model="userForm.email_or_phone" type="text" id="email_or_phone" placeholder="Digite o seu ou numero de celular" class="bg-gray-200 rounded-xl py-4 px-6">
-              <div>@error('userForm.email_or_phone') {{ $message }} @enderror</div>
+              <input wire:model="userForm.email_or_phone" type="text" id="email_or_phone" placeholder="Digite o seu ou numero de celular" class="bg-gray-200 rounded-xl py-4 px-6 @error('userForm.email_or_phone') border-2 border-red-500 @enderror">
+              <div class="text-danger text-sm pt-0">@error('email_or_phone_exists') {{ $message }} @enderror</div>
             </div>
 
             <div class="flex flex-col gap-2.5">
               <label for="full_name">Password</label>
-              <input wire:model="userForm.password" type="password" id="password" placeholder="Digite uma password" class="bg-gray-200 rounded-xl py-4 px-6">
-              <div>@error('userForm.password') {{ $message }} @enderror</div>
+              <input wire:model="userForm.password" type="password" id="password" placeholder="Digite uma password" class="bg-gray-200 rounded-xl py-4 px-6 @error('userForm.password') border-2 border-red-500 @enderror">
             </div>
 
             <div class="flex flex-col gap-2.5">
               <label for="full_name">Confirmacao de password</label>
-              <input wire:model="userForm.password_confirmation" type="password" id="password_confirm" placeholder="Digite novamente a password" class="bg-gray-200 rounded-xl py-4 px-6">
-              <div>@error('userForm.password') {{ $message }} @enderror</div>
+              <input wire:model="userForm.password_confirmation" type="password" id="password_confirm" placeholder="Digite novamente a password" class="bg-gray-200 rounded-xl py-4 px-6 @error('userForm.password') border-2 border-red-500 @enderror">
             </div>
 
             <button type="submit" class="bg-primary rounded-xl py-4 text-white">Registar</button>
@@ -48,3 +45,20 @@
       </div>
     </main>
 </div>
+
+@script
+
+<script>
+    Livewire.on('show-message', (event) => {
+      Swal.fire({
+        toast:true,
+        showConfirmButton: false,
+        position: 'top-end',
+        icon: event.type,
+        title: event.message,
+        timer: 1500,
+      });
+    });
+</script>
+
+@endscript
