@@ -21,10 +21,22 @@
         </div>
         
         @auth
-        <div class="bg-white w-10 h-10 rounded-full flex items-center justify-center relative">
-            <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9 10C10.364 10 11.6721 9.47322 12.6365 8.53553C13.601 7.59785 14.1429 6.32608 14.1429 5C14.1429 3.67392 13.601 2.40215 12.6365 1.46447C11.6721 0.526784 10.364 0 9 0C7.63603 0 6.32792 0.526784 5.36345 1.46447C4.39898 2.40215 3.85714 3.67392 3.85714 5C3.85714 6.32608 4.39898 7.59785 5.36345 8.53553C6.32792 9.47322 7.63603 10 9 10ZM7.16384 11.875C3.20625 11.875 0 14.9922 0 18.8398C0 19.4805 0.534375 20 1.1933 20H16.8067C17.4656 20 18 19.4805 18 18.8398C18 14.9922 14.7938 11.875 10.8362 11.875H7.16384Z" fill="#042940"/>
-            </svg>
+        <div class="relative" x-cloak x-data="{open: false}">
+            <button type="button" @click="open = !open" class="bg-white w-10 h-10 rounded-full flex items-center justify-center cursor-pointer">
+                <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 10C10.364 10 11.6721 9.47322 12.6365 8.53553C13.601 7.59785 14.1429 6.32608 14.1429 5C14.1429 3.67392 13.601 2.40215 12.6365 1.46447C11.6721 0.526784 10.364 0 9 0C7.63603 0 6.32792 0.526784 5.36345 1.46447C4.39898 2.40215 3.85714 3.67392 3.85714 5C3.85714 6.32608 4.39898 7.59785 5.36345 8.53553C6.32792 9.47322 7.63603 10 9 10ZM7.16384 11.875C3.20625 11.875 0 14.9922 0 18.8398C0 19.4805 0.534375 20 1.1933 20H16.8067C17.4656 20 18 19.4805 18 18.8398C18 14.9922 14.7938 11.875 10.8362 11.875H7.16384Z" fill="#042940"/>
+                </svg>
+            </button>
+
+            <div x-show="open" class="absolute bg-white rounded-xl border-2 border-primary right-0 top-14 w-80">
+                <ul class="flex flex-col">
+                    <li class="px-4 py-2 bg-primary rounded-t-lg font-semibold text-lg text-white">Azafo Alexandre Cossa</li>
+                    <li class="text-lg border-t-2 border-dark"><a class="block w-full h-full px-4 py-2" href="dashboard.html">Dashboard</a></li>
+                    <li class="rounded-b-lg text-lg border-t-2 border-dark">
+                        <a class="block w-full h-full px-4 py-2" href="{{ route('logout') }}">Sair</a>
+                    </li>
+                </ul>
+            </div>
         </div>
         @endauth
     </div>

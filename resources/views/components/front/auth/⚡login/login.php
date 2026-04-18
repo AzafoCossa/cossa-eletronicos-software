@@ -45,6 +45,6 @@ new class extends Component
 
         session()->regenerate();
 
-        return redirect()->intended('home');
+        return redirect()->intended(route('home'));
     }
 };
