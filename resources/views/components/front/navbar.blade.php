@@ -31,7 +31,7 @@
             <div x-show="open" class="absolute bg-white rounded-xl border-2 border-primary right-0 top-14 w-80">
                 <ul class="flex flex-col">
                     <li class="px-4 py-2 bg-primary rounded-t-lg font-semibold text-lg text-white">Azafo Alexandre Cossa</li>
-                    <li class="text-lg border-t-2 border-dark"><a class="block w-full h-full px-4 py-2" href="dashboard.html">Dashboard</a></li>
+                    <li class="text-lg border-t-2 border-dark"><a class="block w-full h-full px-4 py-2" href="{{ route('dashboard.home') }}">Dashboard</a></li>
                     <li class="rounded-b-lg text-lg border-t-2 border-dark">
                         <a class="block w-full h-full px-4 py-2" href="{{ route('logout') }}">Sair</a>
                     </li>
