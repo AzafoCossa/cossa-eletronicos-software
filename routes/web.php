@@ -9,6 +9,11 @@ Route::livewire('/login', 'front.auth.login')->name('login');
 Route::livewire('/register', 'front.auth.register')->name('register');
 
 Route::middleware('auth')->group(function(){
+
+    Route::prefix('dashboard')->name('dashboard.')->group(function(){
+        Route::livewire('/', 'dashboard.home')->name('home');
+    });
+
     Route::get('logout', function(){
         Auth::logout(); 
         
