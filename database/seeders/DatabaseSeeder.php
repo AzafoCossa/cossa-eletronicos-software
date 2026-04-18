@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserIdentifierTypeSeeder::class,
             RoleSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }
