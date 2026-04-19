@@ -3,14 +3,13 @@
 use App\Livewire\Forms\ProvinceForm;
 use App\Models\Province;
 use Livewire\Component;
+use App\Traits\ShowMessage;
 
 new class extends Component
 {
+    use ShowMessage;
     public $provinces = [];
-    public bool $showMessage = false;
-    public string $messageType = 'success';
-    public string $message = '';
-
+    
     public ProvinceForm $provinceForm;
 
     public function mount(){
@@ -26,7 +25,4 @@ new class extends Component
         };
     }
 
-    private function showMessage(string $type, string $message){
-        $this->dispatch('show-message', message: $message, type: $type);
-    }
 };
