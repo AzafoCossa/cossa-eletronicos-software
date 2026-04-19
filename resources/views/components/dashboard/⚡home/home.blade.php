@@ -235,3 +235,17 @@
         </main>
     </div>
 </x-layouts.dashboard>
+@script
+    <script>
+        Livewire.on('show-message', event => {
+            Swal.fire({
+                toast:true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer:1500,
+                icon: event.type,
+                title: event.message
+            })
+        });
+    </script>
+@endscript

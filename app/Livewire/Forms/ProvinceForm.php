@@ -3,11 +3,12 @@
 namespace App\Livewire\Forms;
 
 use App\Models\Province;
+use Illuminate\Support\Facades\Log;
 use Livewire\Form;
 
 class ProvinceForm extends Form
 {
-    public string $name;
+    public ?string $name;
 
     public function save(){
         $this->validate([
@@ -18,9 +19,10 @@ class ProvinceForm extends Form
         $province->name = $this->name;
 
         if($province->save()){
-            return dd('Saved');
+            $this->reset();
+            return true;
         }
 
-        return dd('not saved...');
+        return false;
     }
 }
