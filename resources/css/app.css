@@ -25,6 +25,19 @@
     --container-max-width: 1660px;
 }
 
+@layer components{
+  .btn{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: var(--radius-lg);
+    background-color: var(--color-gray-400);
+    font-size: var(--text-lg);
+    cursor: pointer;
+  }
+}
+
 #auth-image-container {
   background-image: url('/public/assets/auth_background.jpg');
 }
