@@ -7,8 +7,11 @@
         <title>CossaEletronicos | Dashboard</title>
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @stack('styles')
     </head>
     <body class="font-family">
         {{ $slot }}
+
+        @stack('scripts')
     </body>
 </html>
