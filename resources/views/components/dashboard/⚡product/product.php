@@ -14,7 +14,6 @@ new class extends Component
     public bool $showCategoryForm = false;
     public bool $showProductForm = false;
 
-    public $allCategories = [];
     public $categories = [];
     public $products = [];
 
@@ -22,29 +21,28 @@ new class extends Component
     public CategoryForm $categoryForm;
 
     public function mount(){
-        $this->allCategories = $this->getCategories();
-        $this->categories = $this->getCategories()->where('parent_id', null)->load('children');
+        $this->categories = $this->getCategories();
         $this->products = $this->getProducts();
     }
 
     public function saveProduct(){
         if($this->productForm->save()){
-            $this->showMessage(type: 'Success', message: 'Produto salvo com sucesso!');
+            $this->showMessage(type: 'success', message: 'Produto salvo com sucesso!');
             $this->showProductForm = false;
             $this->products = $this->getProducts();
         }else{
-            $this->showMessage(type: 'Error', message: 'Erro ao salvar produto!');
+            $this->showMessage(type: 'error', message: 'Erro ao salvar produto!');
         }
     }
 
     public function saveCategory(){
         if($this->categoryForm->save()){
-            $this->showMessage(type: 'Success', message: 'Categoria salva com sucesso!');
+            $this->showMessage(type: 'success', message: 'Categoria salva com sucesso!');
             $this->showCategoryForm = false;
             $this->categories = $this->getCategories();
 
         }else{
-            $this->showMessage(type: 'Error', message: 'Erro ao salvar categoria!');
+            $this->showMessage(type: 'error', message: 'Erro ao salvar categoria!');
         }
     }
 

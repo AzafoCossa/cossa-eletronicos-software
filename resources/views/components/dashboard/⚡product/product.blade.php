@@ -5,7 +5,7 @@
             <button x-show="!showCategoryForm && !showProductForm" @click="showCategoryForm = true" class="btn text-white bg-blue-500"><x-plus-icon/>Adicionar categoria</button>
         </div>
 
-        <div x-show="!showCategoryForm && !showProductForm" class="grid grid-cols-2 gap-5 items-start">
+        <div x-show="!showCategoryForm && !showProductForm">
             <div class="bg-white rounded-xl mt-2.5">
                 <h2 class="text-base mt-2.5 ml-2.5 leading-10">
                     Listagem de produtos
@@ -22,6 +22,7 @@
                                 <th class="p-2.5">Nome</th>
                                 <th class="p-2.5">Descrição</th>
                                 <th class="p-2.5">Stock</th>
+                                <th class="p-2.5">Preco</th>
                                 <th class="p-2.5">Categoria</th>
                             </tr>
                         </thead>
@@ -43,46 +44,10 @@
                                     {{ $product->stock }}
                                 </td>
                                 <td class="p-2.5">
+                                    {{ $product->price }}
+                                </td>
+                                <td class="p-2.5">
                                     {{ $product->category->name }}
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-                <!-- TABELA -->
-            </div>
-
-            <div class="bg-white rounded-xl mt-2.5">
-                <h2 class="text-base mt-2.5 ml-2.5 leading-10">
-                    Listagem de Categorias
-                </h2>
-
-                <!-- TABELA -->
-                <div>
-                    <table class="w-full text-left py-2.5">
-                        <thead>
-                            <tr
-                                class="text-base text-black font-bold border-y-2 border-gray-200"
-                            >
-                                <th class="p-2.5">#</th>
-                                <th class="p-2.5">Nome</th>
-                                <th class="p-2.5">Subcategorias</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-base text-gray-600">
-                            @foreach($categories as $category)
-                            <tr
-                                class="border-b border-gray-200 hover:bg-gray-200"
-                            >
-                                <td class="p-2.5 flex items-center gap-2.5">
-                                    <p>{{ $loop->index+1 }}</p>
-                                </td>
-                                <td class="p-2.5">
-                                    {{ $category->name }}
-                                </td>
-                                <td class="p-2.5">
-                                    {{ $category->children->count() }}
                                 </td>
                             </tr>
                             @endforeach
@@ -111,7 +76,7 @@
                         <label for="productCategory">Categoria do produto</label>
                         <select id="productCategory" wire:model="productForm.category_id" class="select2 mt-2.5 form-control">
                             <option value="">Selecione uma categoria</option>
-                            @foreach($allCategories as $category)
+                            @foreach($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
