@@ -16,157 +16,26 @@
         </div>
 
         <div class="w-full flex flex-wrap justify-center gap-5 mt-10">
-          <div class="p-5 flex flex-col rounded-xl border-2 border-dark w-full max-w-92">
+          @foreach($products as $product)
+          <div class="p-5 flex flex-col rounded-xl border-2 border-dark w-full max-w-92 place-content-between">
             <div class="w-full relative">
               <img src="{{ asset('/products/product_1.jpg') }}" alt="Produto" class="w-full h-auto rounded-xl">
-              <div class="bg-primary px-5 py-1 rounded-xl absolute top-5 left-5">
-                <p class="uppercase text-xs text-white">Novo</p>
+              <div class="@if($product->is_used) bg-dark-green @else bg-primary @endif px-5 py-1 rounded-xl absolute top-5 left-5">
+                <p class="uppercase text-xs text-white">{{ $product->is_used ? 'Usado' : 'Novo' }}</p>
               </div>
             </div>
 
             <div class="mt-2.5 flex flex-col gap-2.5">
-              <h1 class="text-2xl font-bold text-dark">Samsung Galaxy S21+</h1>
+              <h1 class="text-2xl font-bold text-dark">{{ $product->name }}</h1>
               <p class="text-xl">
-                Tem de 6.7”, resolução de 2400x1080 px, 5G, Wi-fi, GPS. Memória interna de 256 GB.
+                {{ $product->description }}
               </p>
-              <h2 class="text-2xl text-primary font-semibold">36.000,00 MZN</h2>
+              <h2 class="text-2xl text-primary font-semibold">{{ $product->price }} MZN</h2>
             </div>
 
             <button class="bg-primary text-white font-semibold text-xl uppercase py-5 rounded-xl mt-5">Adicionar ao carrinho</button>
           </div>
-
-          <div class="p-5 flex flex-col rounded-xl border-2 border-dark w-full max-w-92">
-            <div class="w-full relative">
-              <img src="{{ asset('/products/product_2.jpg') }}" alt="Produto" class="w-full h-auto rounded-xl">
-              <div class="bg-primary px-5 py-1 rounded-xl absolute top-5 left-5">
-                <p class="uppercase text-xs text-white">Novo</p>
-              </div>
-            </div>
-
-            <div class="mt-2.5 flex flex-col gap-2.5">
-              <h1 class="text-2xl font-bold text-dark">Liquidificador Philips powercombo</h1>
-              <p class="text-xl">
-                Ideial para batidos, possui 4 velocidades, 3 laminas e uma potencia de 900W.
-              </p>
-              <h2 class="text-2xl text-primary font-semibold">1.650,00 MZN</h2>
-            </div>
-
-            <button class="bg-primary text-white font-semibold text-xl uppercase py-5 rounded-xl mt-5">Adicionar ao carrinho</button>
-          </div>
-
-          <div class="p-5 flex flex-col rounded-xl border-2 border-dark w-full max-w-92">
-            <div class="w-full relative">
-              <img src="{{ asset('/products/product_3.jpg') }}" alt="Produto" class="w-full h-auto rounded-xl">
-              <div class="bg-primary px-5 py-1 rounded-xl absolute top-5 left-5">
-                <p class="uppercase text-xs text-white">Novo</p>
-              </div>
-            </div>
-
-            <div class="mt-2.5 flex flex-col gap-2.5">
-              <h1 class="text-2xl font-bold text-dark">Secador de cabelo Equator</h1>
-              <p class="text-xl">
-                Ideial para secar o cabelo no dia-a-dia, rapido, 4 temperaturas e uma potencia de 240W.
-              </p>
-              <h2 class="text-2xl text-primary font-semibold">1.650,00 MZN</h2>
-            </div>
-
-            <button class="bg-primary text-white font-semibold text-xl uppercase py-5 rounded-xl mt-5">Adicionar ao carrinho</button>
-          </div>
-
-          <div class="p-5 flex flex-col rounded-xl border-2 border-dark w-full max-w-92">
-            <div class="w-full relative">
-              <img src="{{ asset('/products/product_4.jpg') }}" alt="Produto" class="w-full h-auto rounded-xl">
-              <div class="bg-primary px-5 py-1 rounded-xl absolute top-5 left-5">
-                <p class="uppercase text-xs text-white">Novo</p>
-              </div>
-            </div>
-
-            <div class="mt-2.5 flex flex-col gap-2.5">
-              <h1 class="text-2xl font-bold text-dark">Samsung Galaxy A35</h1>
-              <p class="text-xl">
-                Tem de 6.7”, resolução de 2400x1080 px, 5G, Wi-fi, GPS. Memória interna de 256 GB.
-              </p>
-              <h2 class="text-2xl text-primary font-semibold">16.000,00 MZN</h2>
-            </div>
-
-            <button class="bg-primary text-white font-semibold text-xl uppercase py-5 rounded-xl mt-5">Adicionar ao carrinho</button>
-          </div>
-
-          <div class="p-5 flex flex-col rounded-xl border-2 border-dark w-full max-w-92">
-            <div class="w-full relative">
-              <img src="{{ asset('/products/product_5.jpg') }}" alt="Produto" class="w-full h-auto rounded-xl">
-              <div class="bg-dark-green px-5 py-1 rounded-xl absolute top-5 left-5">
-                <p class="uppercase text-xs text-white">Usado</p>
-              </div>
-            </div>
-
-            <div class="mt-2.5 flex flex-col gap-2.5">
-              <h1 class="text-2xl font-bold text-dark">Laptop Asus E410M 14" Celerom</h1>
-              <p class="text-xl">
-                Intel Celeron N4020, 4GB RAM, 64GB eMMC, Tela 14", Windows 11 Home.
-              </p>
-              <h2 class="text-2xl text-primary font-semibold">12.660,00 MZN</h2>
-            </div>
-
-            <button class="bg-primary text-white font-semibold text-xl uppercase py-5 rounded-xl mt-5">Adicionar ao carrinho</button>
-          </div>
-
-          <div class="p-5 flex flex-col rounded-xl border-2 border-dark w-full max-w-92">
-            <div class="w-full relative">
-              <img src="{{ asset('/products/product_6.jpg') }}" alt="Produto" class="w-full h-auto rounded-xl">
-              <div class="bg-primary px-5 py-1 rounded-xl absolute top-5 left-5">
-                <p class="uppercase text-xs text-white">Novo</p>
-              </div>
-            </div>
-
-            <div class="mt-2.5 flex flex-col gap-2.5">
-              <h1 class="text-2xl font-bold text-dark">Laptop HP ProBook 450 G5</h1>
-              <p class="text-xl">
-                Core i5, 8GB RAM, 256 GB SSD, Tela 15.6" Full HD
-              </p>
-              <h2 class="text-2xl text-primary font-semibold">36.000,00 MZN</h2>
-            </div>
-
-            <button class="bg-primary text-white font-semibold text-xl uppercase py-5 rounded-xl mt-5">Adicionar ao carrinho</button>
-          </div>
-
-          <div class="p-5 flex flex-col rounded-xl border-2 border-dark w-full max-w-92">
-            <div class="w-full relative">
-              <img src="{{ asset('/products/product_1.jpg') }}" alt="Produto" class="w-full h-auto rounded-xl">
-              <div class="bg-primary px-5 py-1 rounded-xl absolute top-5 left-5">
-                <p class="uppercase text-xs text-white">Novo</p>
-              </div>
-            </div>
-
-            <div class="mt-2.5 flex flex-col gap-2.5">
-              <h1 class="text-2xl font-bold text-dark">Samsung Galaxy S21+</h1>
-              <p class="text-xl">
-                Tem de 6.7”, resolução de 2400x1080 px, 5G, Wi-fi, GPS. Memória interna de 256 GB.
-              </p>
-              <h2 class="text-2xl text-primary font-semibold">36.000,00 MZN</h2>
-            </div>
-
-            <button class="bg-primary text-white font-semibold text-xl uppercase py-5 rounded-xl mt-5">Adicionar ao carrinho</button>
-          </div>
-
-          <div class="p-5 flex flex-col rounded-xl border-2 border-dark w-full max-w-92">
-            <div class="w-full relative">
-              <img src="{{ asset('/products/product_1.jpg') }}" alt="Produto" class="w-full h-auto rounded-xl">
-              <div class="bg-primary px-5 py-1 rounded-xl absolute top-5 left-5">
-                <p class="uppercase text-xs text-white">Novo</p>
-              </div>
-            </div>
-
-            <div class="mt-2.5 flex flex-col gap-2.5">
-              <h1 class="text-2xl font-bold text-dark">Samsung Galaxy S21+</h1>
-              <p class="text-xl">
-                Tem de 6.7”, resolução de 2400x1080 px, 5G, Wi-fi, GPS. Memória interna de 256 GB.
-              </p>
-              <h2 class="text-2xl text-primary font-semibold">36.000,00 MZN</h2>
-            </div>
-
-            <button class="bg-primary text-white font-semibold text-xl uppercase py-5 rounded-xl mt-5">Adicionar ao carrinho</button>
-          </div>
+          @endforeach
         </div>
 
         <div class="my-16 flex justify-center">
