@@ -6,7 +6,7 @@
 
     <div class="sidebar_links flex flex-col items-center justify-between h-9/10">
         <ul class="flex flex-col mt-10 w-full px-5 text-white">
-        <li class="p-2.5 rounded-md bg-primary">
+        <li class="p-2.5 rounded-md {{ request()->routeIs('dashboard.home') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
             <a href="{{ route('dashboard.home') }}" class="flex gap-2.5">
             <span class="icon">
                 <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -16,7 +16,7 @@
             <p class="hidden lg:block">Dashboard</p>
             </a>
         </li>
-        <li class="p-2.5 rounded-md mt-2.5 hover:bg-white/19">
+        <li class="p-2.5 rounded-md mt-2.5  hover:bg-white/19 transition-al duration-500">
             <a href="" class="flex gap-2.5">
             <span class="icon">
                 <svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -26,7 +26,7 @@
             Recibos
             </a>
         </li>
-        <li  class="p-2.5 rounded-md mt-2.5 hover:bg-white/19">
+        <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.products') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
             <a href="{{ route('dashboard.products') }}" class="flex gap-2.5">
             <span class="icon">
                 <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,13 +36,13 @@
             Produtos
             </a>
         </li>
-        <li  class="p-2.5 rounded-md mt-2.5 hover:bg-white/19">
+        <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.categories') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
             <a href="{{ route('dashboard.categories') }}" class="flex gap-2.5">
             <x-icons.category fill="#fff"/>
             Categorias
             </a>
         </li>
-        <li  class="p-2.5 rounded-md mt-2.5 hover:bg-white/19">
+        <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.suppliers') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
             <a href="{{ route('dashboard.suppliers') }}" class="flex gap-2.5">
             <span class="icon">
                 <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -54,7 +54,7 @@
         </li>
         </ul>
         <ul class="flex flex-col mb-4 w-full px-5 text-white">
-        <li  class="p-2.5 rounded-md mt-2.5 bg-white/19 hover:bg-white/30">
+        <li  class="p-2.5 rounded-md mt-2.5 bg-white/19 hover:bg-white/30 transition-al duration-300">
             <a href="" class="flex gap-2.5">
             <span class="icon">
                 <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
