@@ -36,8 +36,21 @@
     font-size: var(--text-lg);
     cursor: pointer;
   }
+
+  .form-control{
+    background-color: var(--color-gray-200);
+    border-radius: var(--radius-xl);
+    padding: 1rem 1.5rem;
+    width: 100%;
+  }
+
+  .input-error{
+    border: 2px solid var(--color-danger);
+  }
 }
 
 #auth-image-container {
   background-image: url('/public/assets/auth_background.jpg');
 }
+
+[x-cloak] { display: none !important; }
