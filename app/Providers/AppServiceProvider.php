@@ -28,7 +28,6 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->configureDefaults();
         Blade::component('layouts.dashboard', DashboardLayout::class);
-        Blade::component('plus-icon', PlusIcon::class);
     }
 
     /**
