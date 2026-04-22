@@ -59,7 +59,7 @@
                 </div>
             </div>
         </nav>
-        <div>
+        <div class="p-2.5 overflow-y-auto h-[calc(100vh-3.75rem)]">
             {{ $slot }}
         </div>
     </div>
