@@ -61,17 +61,10 @@
         <!-- FORMULÁRIO DE ADIÇÃO DE Productos -->
         <div x-show="showProductForm" class="w-2xl mt-5">
             <form wire:submit.prevent="saveProduct">
+                <div class="text-sm text-danger mb-5">
+                    @error('product_error') {{$message}} @enderror
+                </div>
                 <div class="flex flex-col">
-                    <label for="productName">Nome do produto</label>
-                    <input wire:model="productForm.name" type="text" class="mt-2.5 form-control @error('productForm.name') input-error @enderror" placeholder="Digite o nome do produto">
-                </div>
-
-                <div class="flex flex-col mt-5">
-                    <label for="productDescription">Descrição do produto</label>
-                    <textarea wire:model="productForm.description" id="productDescription" class="form-control resize-none" placeholder="Digite a descricao do produto"></textarea>
-                </div>
-
-                <div class="flex flex-col mt-5">
                     <div wire:ignore>
                         <label for="productCategory">Categoria do produto</label>
                         <select id="productCategory" wire:model="productForm.category_id" class="select2 mt-2.5 form-control">
@@ -82,6 +75,22 @@
                         </select>
                     </div>
                     <div class="text-danger text-sm">@error('productForm.category'){{ $message }}@enderror</div>
+                </div>
+                <div class="flex flex-col mt-5">
+                    <label for="productName">Nome do produto</label>
+                    <input wire:model="productForm.name" type="text" class="mt-2.5 form-control @error('productForm.name') input-error @enderror" placeholder="Digite o nome do produto">
+                </div>
+
+                <div class="flex flex-col mt-5">
+                    <label for="productDescription">Descrição do produto</label>
+                    <textarea wire:model="productForm.description" id="productDescription" class="form-control resize-none" placeholder="Digite a descricao do produto"></textarea>
+                </div>
+
+                <div>
+                    <div class="flex flex-col gap-2.5 mt-5">
+                        <input wire:model="productForm.imageFile" type="file" placeholder="Selecione uma imagem" class="form-control grow @error('productForm.imageFile') input-error @enderror" accept="image/jpeg,image/png">
+                        <div class="text-danger text-sm">@error('productForm.imageFile'){{ $message }}@enderror</div>
+                    </div>
                 </div>
 
                 <div class="flex mt-10 gap-2.5">

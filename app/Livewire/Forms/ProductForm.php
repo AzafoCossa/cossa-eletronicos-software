@@ -2,16 +2,24 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\Image;
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
+use Livewire\WithFileUploads;
 
 class ProductForm extends Form
 {
+    use WithFileUploads;
+
     public ?int $id = null;
     public ?string $name;
     public ?string $description;
     public ?int $category;
+    public $imageFile;
 
     public function save():bool
     {
@@ -19,18 +27,36 @@ class ProductForm extends Form
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'category' => 'required|exists:categories,id',
+            'imageFile' => 'required|file|image|mimes:jpeg,png|max:5120',
         ]);
 
-        $product = new Product();
-        $product->name = $this->name;
-        $product->description = $this->description;
-        $product->category_id = $this->category;
+        try{
+            DB::transaction(function(){
+                $product = new Product();
+                $product->name = $this->name;
+                $product->description = $this->description;
+                $product->category_id = $this->category;
+                $product->save();
 
-        if($product->save()){
+                $imagePath = $this->imageFile->store('products', 'public');
+
+                $image = new Image();
+                $image->path = $imagePath;
+                $image->is_primary = true;
+
+                $product->images()->save($image);
+            });
+
             $this->reset();
-            return true;
-        }
 
-        return false;
+            return true;
+        }catch(\Exception $e){
+            Log::error('Erro ao salvar produto: ' . $e->getMessage());
+
+            throw ValidationException::withMessages([
+                'product_error' => 'Nao foi possivel salvar o produto!'
+            ]);
+            return false;
+        }
     }
 }

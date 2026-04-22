@@ -19,7 +19,13 @@
           @foreach($products as $product)
           <div class="p-5 flex flex-col rounded-xl border-2 border-dark w-full max-w-92 place-content-between">
             <div class="w-full relative">
-              <img src="{{ asset('/products/product_1.jpg') }}" alt="Produto" class="w-full h-auto rounded-xl">
+              @if($product->images->isNotEmpty())
+              <img src="storage/{{ $product->images->first()->path }}" alt="Produto" class="w-full h-80 rounded-xl">
+              @else
+              <div class="w-full h-80 bg-gray-200 rounded-xl flex items-center justify-center">
+                <p class="text-gray-500">Sem imagem</p>
+              </div>
+              @endif
               <div class="@if($product->is_used) bg-dark-green @else bg-primary @endif px-5 py-1 rounded-xl absolute top-5 left-5">
                 <p class="uppercase text-xs text-white">{{ $product->is_used ? 'Usado' : 'Novo' }}</p>
               </div>

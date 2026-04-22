@@ -1,4 +1,4 @@
-<aside class="w-15 lg:w-80 bg-dark overflow-x-none overflow-y-auto h-screen drop-shadow-lg drop-shadow-black z-20">
+<aside wire:ignore class="w-15 lg:w-80 bg-dark overflow-x-none overflow-y-auto h-screen drop-shadow-lg drop-shadow-black z-20">
     <div class="bg-white h-15 flex items-center justify-center">
         <img id="logo-dark" src="{{ asset('assets/logoDark.svg')}}" alt="Logotipo da Gráficos Certos" class="hidden lg:block">
         <img id="logoMark" src="{{ asset('assets/logoDark.svg')}}" alt="Logomark da Gráficos Certos" class="block lg:hidden">

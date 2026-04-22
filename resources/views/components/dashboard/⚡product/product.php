@@ -6,10 +6,11 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Traits\ShowMessage;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 new class extends Component
 {
-    use ShowMessage;
+    use ShowMessage, WithFileUploads;
 
     public bool $showCategoryForm = false;
     public bool $showProductForm = false;
@@ -45,6 +46,18 @@ new class extends Component
             $this->showMessage(type: 'error', message: 'Erro ao salvar categoria!');
         }
     }
+
+    // public function adicionarImagem(){
+    //     $this->productForm->images[] = [
+    //         'path' => null,
+    //         'is_primary' => false,
+    //     ];
+    // }
+
+    // public function removerImagem($index){
+    //     unset($this->productForm->images[$index]);
+    //     $this->productForm->images = array_values($this->productForm->images);
+    // }
 
     private function getProducts(){
         return Product::with('category')->get();
