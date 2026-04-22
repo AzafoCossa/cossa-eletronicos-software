@@ -28,6 +28,7 @@ class SupplierForm extends Form
         $supplier->description = $this->description;
 
         if($supplier->save()){
+            $this->reset();
             return true;
         } else {
             return false;
