@@ -1,7 +1,7 @@
 @push('styles')
 <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}" />
 @endpush
-<div class="h-screen w-screen flex bg-gray-100">
+<div class="h-screen w-screen flex bg-gray-100" x-cloak>
     <x-sidebar />
 
     <div class="w-full">
