@@ -16,14 +16,10 @@
             <p class="hidden lg:block">Dashboard</p>
             </a>
         </li>
-        <li class="p-2.5 rounded-md mt-2.5  hover:bg-white/19 transition-al duration-500">
-            <a href="" class="flex gap-2.5">
-            <span class="icon">
-                <svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 2.50049C0 1.12131 1.14621 0 2.556 0H8.946V5.00098C8.946 5.69252 9.5171 6.25122 10.224 6.25122H15.336V11.7054L11.5539 15.4054C11.2264 15.7257 10.9948 16.1282 10.883 16.5657L10.2839 18.9139C10.192 19.2811 10.212 19.6562 10.3398 20H2.556C1.14621 20 0 18.8787 0 17.4995V2.50049ZM15.336 5.00098H10.224V0L15.336 5.00098ZM21.9576 9.20883L22.5327 9.77144C23.1558 10.3809 23.1558 11.3694 22.5327 11.9828L21.3586 13.1315L18.523 10.3575L19.6972 9.20883C20.3202 8.59934 21.3306 8.59934 21.9576 9.20883ZM12.4565 16.2922L17.6164 11.2444L20.452 14.0184L15.2921 19.0623C15.1283 19.2225 14.9246 19.3358 14.697 19.3905L12.2968 19.9766C12.0771 20.0313 11.8495 19.9687 11.6897 19.8125C11.53 19.6562 11.4661 19.4335 11.522 19.2186L12.121 16.8705C12.1769 16.6517 12.2928 16.4485 12.4565 16.2883V16.2922Z" fill="white"/>
-                </svg>
-            </span>
-            Recibos
+        <li class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.stocks*') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
+            <a href="{{ route('dashboard.stocks') }}" class="flex gap-2.5">
+            <x-icons.stock fill="#fff"/>
+            Estoque de produtos
             </a>
         </li>
         <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.products*') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
