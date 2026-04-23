@@ -26,7 +26,7 @@
             Recibos
             </a>
         </li>
-        <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.products') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
+        <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.products*') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
             <a href="{{ route('dashboard.products') }}" class="flex gap-2.5">
             <span class="icon">
                 <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
