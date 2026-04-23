@@ -16,8 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->unsignedBigInteger('price')->default(0);
-            $table->unsignedInteger('stock')->default(0);
+            $table->boolean('is_new')->default(false);
             $table->foreignIdFor(Category::class)->constrained();
             $table->timestamps();
         });

@@ -21,15 +21,13 @@
                                 <th class="p-2.5">#</th>
                                 <th class="p-2.5">Nome</th>
                                 <th class="p-2.5">Descrição</th>
-                                <th class="p-2.5">Stock</th>
-                                <th class="p-2.5">Preco</th>
                                 <th class="p-2.5">Categoria</th>
                             </tr>
                         </thead>
                         <tbody class="text-base text-gray-600">
                             @foreach($products as $product)
-                            <tr
-                                class="border-b border-gray-200 hover:bg-gray-200"
+                            <tr wire:click="viewProduct({{$product}})"
+                                class="border-b border-gray-200 hover:bg-gray-200 cursor-pointer"
                             >
                                 <td class="p-2.5 flex items-center gap-2.5">
                                     <p>{{ $loop->index+1 }}</p>
@@ -39,12 +37,6 @@
                                 </td>
                                 <td class="p-2.5">
                                     {{ $product->description }}
-                                </td>
-                                <td class="p-2.5">
-                                    {{ $product->stock }}
-                                </td>
-                                <td class="p-2.5">
-                                    {{ $product->price }}
                                 </td>
                                 <td class="p-2.5">
                                     {{ $product->category->name }}
