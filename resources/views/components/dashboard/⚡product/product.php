@@ -36,6 +36,10 @@ new class extends Component
         }
     }
 
+    public function viewProduct(Product $product){
+        return redirect()->route('dashboard.products.view', $product);
+    }
+
     public function saveCategory(){
         if($this->categoryForm->save()){
             $this->showMessage(type: 'success', message: 'Categoria salva com sucesso!');
