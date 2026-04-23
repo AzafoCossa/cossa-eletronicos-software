@@ -26,8 +26,8 @@
                 <p class="text-gray-500">Sem imagem</p>
               </div>
               @endif
-              <div class="@if($product->is_used) bg-dark-green @else bg-primary @endif px-5 py-1 rounded-xl absolute top-5 left-5">
-                <p class="uppercase text-xs text-white">{{ $product->is_used ? 'Usado' : 'Novo' }}</p>
+              <div class="@if(!$product->variants->first()->is_new) bg-dark-green @else bg-primary @endif px-5 py-1 rounded-xl absolute top-5 left-5">
+                <p class="uppercase text-xs text-white">{{ $product->variants->first()->is_new ? 'Novo' : 'usado' }}</p>
               </div>
             </div>
 
