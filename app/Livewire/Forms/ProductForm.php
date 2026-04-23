@@ -17,7 +17,7 @@ class ProductForm extends Form
 
     public ?int $id = null;
     public ?string $name;
-    public ?string $description;
+    public ?string $description = null;
     public ?int $category;
     public $imageFile;
 
