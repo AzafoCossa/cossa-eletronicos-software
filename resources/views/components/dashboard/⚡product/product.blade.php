@@ -21,6 +21,7 @@
                                 <th class="p-2.5">#</th>
                                 <th class="p-2.5">Nome</th>
                                 <th class="p-2.5">Descrição</th>
+                                <th class="p-2.5">Numero de variantes</th>
                                 <th class="p-2.5">Categoria</th>
                             </tr>
                         </thead>
@@ -37,6 +38,9 @@
                                 </td>
                                 <td class="p-2.5">
                                     {{ $product->description }}
+                                </td>
+                                <td class="p-2.5 text-center">
+                                    {{ $product->variants->count() }}
                                 </td>
                                 <td class="p-2.5">
                                     {{ $product->category->name }}
