@@ -40,7 +40,10 @@
                                         {{$product->name. ' '. $variant->name }}
                                     </td>
                                     <td class="p-2.5">
-                                        {{$product->name. ' '. $variant->name }}
+                                        {{$product->description }}
+                                    </td>
+                                    <td class="p-2.5">
+                                        {{$product->category->name }}
                                     </td>
                                 </tr>
                                 @endforeach
