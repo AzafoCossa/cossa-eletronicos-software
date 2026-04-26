@@ -20,7 +20,6 @@
                             >
                                 <th class="p-2.5">#</th>
                                 <th class="p-2.5">Nome</th>
-                                <th class="p-2.5">Descrição</th>
                                 <th class="p-2.5">Numero de variantes</th>
                                 <th class="p-2.5">Categoria</th>
                             </tr>
@@ -35,9 +34,6 @@
                                 </td>
                                 <td class="p-2.5">
                                     {{ $product->name }}
-                                </td>
-                                <td class="p-2.5">
-                                    {{ $product->description }}
                                 </td>
                                 <td class="p-2.5 text-center">
                                     {{ $product->variants->count() }}
@@ -75,11 +71,6 @@
                 <div class="flex flex-col mt-5">
                     <label for="productName">Nome do produto</label>
                     <input wire:model="productForm.name" type="text" class="mt-2.5 form-control @error('productForm.name') input-error @enderror" placeholder="Digite o nome do produto">
-                </div>
-
-                <div class="flex flex-col mt-5">
-                    <label for="productDescription">Descrição do produto</label>
-                    <textarea wire:model="productForm.description" id="productDescription" class="form-control resize-none" placeholder="Digite a descricao do produto"></textarea>
                 </div>
 
                 <div>

@@ -17,7 +17,6 @@ class ProductForm extends Form
 
     public ?int $id = null;
     public ?string $name;
-    public ?string $description = null;
     public ?int $category;
     public $imageFile;
 
@@ -25,7 +24,6 @@ class ProductForm extends Form
     {
         $this->validate([
             'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
             'category' => 'required|exists:categories,id',
             'imageFile' => 'required|file|image|mimes:jpeg,png|max:5120',
         ]);
@@ -34,7 +32,6 @@ class ProductForm extends Form
             DB::transaction(function(){
                 $product = new Product();
                 $product->name = $this->name;
-                $product->description = $this->description;
                 $product->category_id = $this->category;
                 $product->save();
 

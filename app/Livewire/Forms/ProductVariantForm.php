@@ -11,6 +11,7 @@ class ProductVariantForm extends Form
     public $id = null;
     public $color = null;
     public $name = null;
+    public ?string $description = null;
     public $sku = null;
     public $price = null;
     public $supplier = null;
@@ -22,6 +23,7 @@ class ProductVariantForm extends Form
                 'id' => 'nullable|int',    
                 'supplier' => 'nullable|exists:suppliers,id',
                 'name' => 'required|string',
+                'description' => 'nullable|string',
                 'price' => 'nullable|int',
                 'sku' => 'nullable|string',
                 'color' => 'nullable|string',
@@ -31,6 +33,7 @@ class ProductVariantForm extends Form
 
         $variant = new ProductVariant();
         $variant->name = $this->name;
+        $variant->description = $this->description;
         $variant->product_id = $this->product;
         $variant->supplier_id = $this->supplier;
         $variant->color = $this->color;
