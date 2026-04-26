@@ -1,6 +1,6 @@
 
 <div>
-    <x-front.navbar/>
+    <livewire:front.navbar />
 
     <main class="px-5 mt-10">
       <div class="container mx-auto flex flex-col justify-center items-center">
@@ -19,27 +19,27 @@
           @foreach($products as $product)
           <div class="p-5 flex flex-col rounded-xl border-2 border-dark w-full max-w-92 place-content-between">
             <div class="w-full relative">
-              @if($product->images->isNotEmpty())
-              <img src="storage/{{ $product->images->first()->path }}" alt="Produto" class="w-full h-80 rounded-xl">
+              @if($product->images || $product->variant->images)
+              <img src="storage/{{ $product->variant->images ? $product->variant->images->first()->path : $product->images->first()->path }}" alt="Produto" class="w-full h-80 rounded-xl">
               @else
               <div class="w-full h-80 bg-gray-200 rounded-xl flex items-center justify-center">
                 <p class="text-gray-500">Sem imagem</p>
               </div>
               @endif
               <div class="@if(!$product->variants->first()->is_new) bg-dark-green @else bg-primary @endif px-5 py-1 rounded-xl absolute top-5 left-5">
-                <p class="uppercase text-xs text-white">{{ $product->variants->first()->is_new ? 'Novo' : 'usado' }}</p>
+                <p class="uppercase text-xs text-white">{{ $product->variant->is_new ? 'Novo' : 'usado' }}</p>
               </div>
             </div>
 
             <div class="mt-2.5 flex flex-col gap-2.5">
               <h1 class="text-2xl font-bold text-dark">{{ $product->name }}</h1>
               <p class="text-xl">
-                {{ $product->description }}
+                {{ transformString($product->description) }}
               </p>
-              <h2 class="text-2xl text-primary font-semibold">{{ $product->price }} MZN</h2>
+              <h2 class="text-2xl text-primary font-semibold">{{ $product->variant->price/100 }} MZN</h2>
             </div>
 
-            <button class="bg-primary text-white font-semibold text-xl uppercase py-5 rounded-xl mt-5">Adicionar ao carrinho</button>
+            <button wire:click="addToCart({{$product->variant}})" type="button" class="bg-primary text-white font-semibold text-xl uppercase py-5 rounded-xl mt-5 cursor-pointer">Adicionar ao carrinho</button>
           </div>
           @endforeach
         </div>
@@ -52,3 +52,7 @@
 
     <x-footer/>
 </div>
+@script
+  <script>
+  </script>
+@endscript
