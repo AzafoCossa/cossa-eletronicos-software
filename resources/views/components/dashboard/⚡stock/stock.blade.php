@@ -45,7 +45,7 @@
                                 {{ $stockBatch->quantity_remaining }}
                             </td>
                             <td class="p-2.5">
-                                {{ $stockBatch->variant->product->description }}
+                                {{ transformString($stockBatch->variant->description) }}
                             </td>
                             <td class="p-2.5">
                                 {{ $stockBatch->variant->product->category->name }}

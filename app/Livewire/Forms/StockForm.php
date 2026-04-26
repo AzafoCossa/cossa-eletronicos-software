@@ -32,7 +32,7 @@ class StockForm extends Form
 
             $variant = ProductVariant::where('id', $this->variant)->first();
             $variant->stock = $stock->total_quantity;
-            $variant->price = $this->sale_price;
+            $variant->price = $this->sale_price * 100;
             $variant->save();
 
             $this->reset();
