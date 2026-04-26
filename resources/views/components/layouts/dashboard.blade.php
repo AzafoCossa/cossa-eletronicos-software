@@ -1,6 +1,4 @@
-@push('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}" />
-@endpush
+
 <div class="h-screen w-screen flex bg-gray-100" x-cloak>
     <x-sidebar />
 
@@ -65,34 +63,6 @@
     </div>
 </div>
 @push('scripts')
-<script src="{{ asset('assets/js/jQuery.js') }}"></script>
-<script src="{{ asset('assets/js/select2.js') }}"></script>
 @endpush @script
-<script>
-    Livewire.on("show-message", (event) => {
-        Swal.fire({
-            toast: true,
-            position: "top-end",
-            showConfirmButton: false,
-            timer: 1500,
-            icon: event.type,
-            title: event.message,
-        });
-    });
 
-    $(function () {
-        // Select2 Country
-        var select2 = $(".select2");
-        if (select2.length) {
-            select2.each(function () {
-                var $this = $(this);
-                $this.wrap('<div class="position-relative"></div>').select2({
-                    placeholder: "Selecione uma opção",
-                    dropdownParent: $this.parent(),
-                    width: '100%',
-                });
-            });
-        }
-    });
-</script>
 @endscript
