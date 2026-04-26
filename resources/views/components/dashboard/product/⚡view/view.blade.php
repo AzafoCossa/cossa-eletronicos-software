@@ -25,6 +25,7 @@
                                     <th class="p-2.5">#</th>
                                     <th class="p-2.5">Nome</th>
                                     <th class="p-2.5">Descrição</th>
+                                    <th class="p-2.5">Preco</th>
                                     <th class="p-2.5">Categoria</th>
                                 </tr>
                             </thead>
@@ -40,7 +41,10 @@
                                         {{$product->name. ' '. $variant->name }}
                                     </td>
                                     <td class="p-2.5">
-                                        {{$product->description }}
+                                        {{transformString($product->variant->description) }}
+                                    </td>
+                                    <td class="p-2.5">
+                                        {{$variant->price/100 }}
                                     </td>
                                     <td class="p-2.5">
                                         {{$product->category->name }}
@@ -62,6 +66,11 @@
                 <div class="mt-2.5">
                     <label for="name">Nome da variante</label>
                     <input wire:model="productVariantForm.name" type="text" class="form-control mt-2.5" placeholder="Digite o nome da variante">
+                </div>
+
+                <div class="flex flex-col mt-5">
+                    <label for="productDescription">Descrição do produto</label>
+                    <textarea wire:model="productVariantForm.description" id="productDescription" class="form-control resize-none" placeholder="Digite a descricao do produto"></textarea>
                 </div>
 
                 <div class="mt-5">
