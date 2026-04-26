@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Services\CartService;
 use App\View\Components\Dashboard\DashboardLayout;
 use App\View\Components\PlusIcon;
 use Carbon\CarbonImmutable;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +20,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(CartService::class, function($app){
+            return new CartService($app->make(Request::class));
+        });
     }
 
     /**
