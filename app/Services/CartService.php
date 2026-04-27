@@ -34,7 +34,10 @@ class CartService
             }
 
             if(!$cart){
-                $cart = Cart::create(['user_id' => $user->id]);
+                $cart = Cart::create([
+                    'session_id' => $this->generateSessionId(),
+                    'user_id' => $user->id
+                ]);
             }
 
             return $cart;
@@ -63,17 +66,20 @@ class CartService
     {
         $variant = ProductVariant::findOrFail($variantId);
 
-        if($variant->stock < $quantity){
-            throw new \Exception("Only {$variant->stock} items in stock");
-        }
-
         $cartItem = CartItem::where('cart_id', $this->cart->id)
-            ->where('product_variant_id', $variantId)
+            ->where('product_variant_id', $variant->id)
             ->first();
 
         if($cartItem){
-            $cartItem->quantity += $quantity;
-            $cartItem->save();
+            $currentQuantity = $cartItem->quantity;
+            $newQuantity = $currentQuantity += $quantity;
+
+            if($newQuantity <= $variant->stock){
+                $cartItem->quantity = $newQuantity;
+                $cartItem->save();
+            }else{
+                throw new \Exception("Nao e possivel adicionar o produto, Ja tens {$cartItem->quantity} no seu carrinho e o stock de produtos e {$variant->stock}.");
+            }
         }else{
             $cartItem = CartItem::create([
                 'cart_id' => $this->cart->id,
@@ -86,6 +92,29 @@ class CartService
         $this->cart->touch();
 
         return $cartItem;
+        // if($variant->stock < $quantity){
+        //     throw new \Exception("Only {$variant->stock} items in stock");
+        // }
+
+        // $cartItem = CartItem::where('cart_id', $this->cart->id)
+        //     ->where('product_variant_id', $variantId)
+        //     ->first();
+
+        // if($cartItem){
+        //     $cartItem->quantity += $quantity;
+        //     $cartItem->save();
+        // }else{
+        //     $cartItem = CartItem::create([
+        //         'cart_id' => $this->cart->id,
+        //         'product_variant_id' => $variantId,
+        //         'quantity' => $quantity,
+        //         'price' => $variant->price,
+        //     ]);
+        // }
+
+        // $this->cart->touch();
+
+        // return $cartItem;
     }
 
     public function updateItem(int $itemId, int $quantity): void
@@ -165,25 +194,6 @@ class CartService
         }
 
         return;
-
-
-        // DB::transaction(function() use ($guestCart, $userCartId) {
-        //     foreach($guestCart->items as $guestItem){
-        //         $userItem = CartItem::where('cart_id', $userCartId)
-        //             ->where('product_variant_id', $guestItem->product_variant_id)
-        //             ->first();
-
-        //         if($userItem){
-        //             $userItem->quantity += $guestItem->quantity;
-        //             $userItem->save();
-        //         }else{
-        //             $guestItem->cart_id = $userCartId;
-        //             $guestItem->save();
-        //         }
-        //     }
-
-        //     $guestCart->delete();
-        // });
     }
 
     public function getCartCount(): int
