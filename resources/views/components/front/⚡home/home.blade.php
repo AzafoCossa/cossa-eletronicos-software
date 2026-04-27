@@ -34,7 +34,7 @@
             <div class="mt-2.5 flex flex-col gap-2.5">
               <h1 class="text-2xl font-bold text-dark">{{ $product->name }}</h1>
               <p class="text-xl">
-                {{ transformString($product->description) }}
+                {{ transformString($product->variant->description) }}
               </p>
               <h2 class="text-2xl text-primary font-semibold">{{ $product->variant->price/100 }} MZN</h2>
             </div>

@@ -5,6 +5,7 @@ use App\Models\ProductVariant;
 use App\Services\CartService;
 use App\Traits\ShowMessage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use League\Uri\Builder;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -28,9 +29,14 @@ new class extends Component
     }
 
     public function addToCart($product){
-        $this->cartService->addItem($product['id']);
-        $this->showMessage(type: 'success', message: 'O produto foi adicionado ao carrinho!');
-        $this->dispatch('added-to-cart');
+        try{
+            $this->cartService->addItem($product['id']);
+            $this->showMessage(type: 'success', message: 'O produto foi adicionado ao carrinho!');
+            $this->dispatch('added-to-cart');
+        }catch(\Exception $e){
+            Log::error("Nao foi possivel adicionar item ao stock: {$e}");
+            $this->showMessage(type: 'error', message: 'Nao foi possivel adcionar item ao carrinho!');
+        }
     }
 
     private function getProducts(){
