@@ -1,5 +1,7 @@
 <?php
 
+use Brick\Math\RoundingMode;
+use Brick\Money\Money;
 use Illuminate\Support\Str;
 
 if(!function_exists("isPhone")){
@@ -37,5 +39,13 @@ if(!function_exists('transformString')){
         if ($n) {
             return Str::length($value) > $n ? Str::substr($value, 0, $n - 1) . "..." : $value;
         }
+    }
+}
+
+if(!function_exists('moneyFromCents')){
+    function moneyFromCents($value, string $currency = 'MZN'){
+        $money = Money::ofMinor($value, $currency, null, RoundingMode::Up)->formatToLocale('fr_FR');
+
+        return $money;
     }
 }
