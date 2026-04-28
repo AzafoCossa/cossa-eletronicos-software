@@ -19,6 +19,8 @@ Route::middleware('auth')->group(function(){
         Route::livewire('/suppliers', 'dashboard.supplier')->name('suppliers');
     });
 
+    Route::livewire('/shoping-cart', 'shopping-cart')->name('shopping-cart');
+
     Route::get('logout', function(){
         Auth::logout(); 
         

@@ -5,6 +5,8 @@ namespace App\Services;
 use App\Models\Cart;
 use App\Models\CartItem;
 use App\Models\ProductVariant;
+use Brick\Math\RoundingMode;
+use Brick\Money\Money;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -157,17 +159,26 @@ class CartService
                 'id' => $item->id,
                 'product_variant_id' => $item->product_variant_id,
                 'name' => $item->variant->product->name . ' ' . $item->variant->name,
+                'description' => $item->variant->description,
                 'quantity' => $item->quantity,
-                'price' => $item->price/100,
-                'total_price' => ($item->quantity * ($item->price/100)),
-                'image' => $item->variant->images->first()->path ?? $item->variant->product->images->first()->path,
+                'price' => $item->price,
+                'total_price' => $item->quantity * $item->price,
+                'image' => $item->variant->images ?? $item->variant->product->images->first()->path,
                 'in_stock' => $item->variant->stock >= $item->quantity,
             ];
         });
 
+        $money = Money::ofMinor($this->cart->subtotal, 'MZN');
+        $subtotal = $money->dividedBy(1.16, RoundingMode::Up);
+        $tax = $money->minus($subtotal);
+
         return [
             'items' => $items,
-            'subtotal' => $this->cart->subtotal,
+            'discount' => 0,
+            'delivery_tax' => 0,
+            'tax' => $tax->formatToLocale('pt_PT'),
+            'subtotal' => $subtotal->formatToLocale('pt_PT'),
+            'total' => moneyFromCents($this->cart->subtotal),
             'total_items' => $this->cart->total_items,
             'cart_id' => $this->cart->id,
         ];
