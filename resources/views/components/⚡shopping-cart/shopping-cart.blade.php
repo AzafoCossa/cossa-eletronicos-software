@@ -6,6 +6,7 @@
 
         <div class="flex flex-col xl:flex-row w-full  items-start gap-0 xl:gap-8">
           <div class="flex flex-col gap-5 border grow w-full xl:w-fit  border-dark/24 mt-16 rounded-xl p-6 bg-white">
+          @if($cart['items']->isEmpty()) <p class="text-center">Nao ha nenhum item no carrinho de compras, <a class="text-blue-500 underline" href="{{route('home')}}">Adiciona alguns items no seu carrinho</a></p> @endif
             @foreach($cart['items'] as $item)
             <div class="border border-dark/12 p-2.5 rounded-xl hover:bg-cream transition-all delay-100 ease-in">
                 <div class="flex flex-col xl:flex-row gap-6 justify-between items-center">
