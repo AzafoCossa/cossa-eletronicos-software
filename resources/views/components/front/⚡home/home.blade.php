@@ -36,7 +36,7 @@
               <p class="text-xl">
                 {{ transformString($product->variant->description) }}
               </p>
-              <h2 class="text-2xl text-primary font-semibold">{{ $product->variant->price/100 }} MZN</h2>
+              <h2 class="text-2xl text-primary font-semibold">{{ moneyFromCents($product->variant->price) }}</h2>
             </div>
 
             <button wire:click="addToCart({{$product->variant}})" type="button" class="bg-primary text-white font-semibold text-xl uppercase py-5 rounded-xl mt-5 cursor-pointer">Adicionar ao carrinho</button>
