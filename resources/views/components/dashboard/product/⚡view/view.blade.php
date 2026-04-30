@@ -74,6 +74,14 @@
                 </div>
 
                 <div class="mt-5">
+                    <label class="inline-flex items-center cursor-pointer">
+                    <input wire:model="productVariantForm.is_new" type="checkbox" value="" class="sr-only peer" checked>
+                    <div class="relative w-9 h-5 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:bg-gray-400 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-buffer after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-dark after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+                    <span class="ms-3 text-sm font-medium text-dark select-none">Novo na caixa</span>
+                    </label>
+                </div>
+
+                <div class="mt-5">
                     <label for="name">Nome do fornecedor</label>
                     <div wire:ignore class="mt-2.5">
                         <select wire:model="productVariantForm.supplier" id="supplierSelect" class="form-control select2">

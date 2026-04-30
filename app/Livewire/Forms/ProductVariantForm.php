@@ -15,6 +15,7 @@ class ProductVariantForm extends Form
     public $sku = null;
     public $price = null;
     public $supplier = null;
+    public bool $is_new = false;
     public $product = null;
 
     public function save(){
@@ -36,6 +37,7 @@ class ProductVariantForm extends Form
         $variant->description = $this->description;
         $variant->product_id = $this->product;
         $variant->supplier_id = $this->supplier;
+        $variant->is_new = $this->is_new;
         $variant->color = $this->color;
         $variant->sku = $this->sku;
 
