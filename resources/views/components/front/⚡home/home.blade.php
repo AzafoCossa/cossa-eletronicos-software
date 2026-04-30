@@ -19,8 +19,11 @@
           @foreach($products as $product)
           <div class="p-5 flex flex-col rounded-xl border-2 border-dark w-full max-w-92 place-content-between">
             <div class="w-full relative">
-              @if($product->images || $product->variant->images)
-              <img src="storage/{{ $product->variant->images ? $product->variant->images->first()->path : $product->images->first()->path }}" alt="Produto" class="w-full h-80 rounded-xl">
+              @php
+                $image = $product->variant->images->first() ?? $product->images->first();
+              @endphp
+              @if($image)
+              <img src="storage/{{ $image->path }}" alt="Produto" class="w-full h-80 rounded-xl">
               @else
               <div class="w-full h-80 bg-gray-200 rounded-xl flex items-center justify-center">
                 <p class="text-gray-500">Sem imagem</p>

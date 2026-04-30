@@ -18,7 +18,7 @@ class ProductForm extends Form
     public ?int $id = null;
     public ?string $name;
     public ?int $category;
-    public $imageFile;
+    public $imageFile = null;
 
     public function save():bool
     {
