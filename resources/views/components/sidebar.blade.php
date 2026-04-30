@@ -32,7 +32,7 @@
             Produtos
             </a>
         </li>
-        <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.categories') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
+        <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.categories*') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
             <a href="{{ route('dashboard.categories') }}" class="flex gap-2.5">
             <x-icons.category fill="#fff"/>
             Categorias
