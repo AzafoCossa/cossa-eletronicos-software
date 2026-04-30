@@ -31,6 +31,11 @@ new class extends Component
         }
     }
 
+    public function viewCategory(Category $category)
+    {
+         return redirect()->route('dashboard.categories.view', $category);
+    }
+
     private function getCategories(){
         return Category::all();
     }

@@ -25,8 +25,8 @@
                         </thead>
                         <tbody class="text-base text-gray-600">
                             @foreach($categories as $category)
-                            <tr
-                                class="border-b border-gray-200 hover:bg-gray-200"
+                            <tr wire:click="viewCategory({{$category}})"
+                                class="border-b border-gray-200 hover:bg-gray-200 cursor-pointer"
                             >
                                 <td class="p-2.5 flex items-center gap-2.5">
                                     <p>{{ $loop->index+1 }}</p>
