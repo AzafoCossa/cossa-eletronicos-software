@@ -8,6 +8,8 @@ Route::livewire('/', 'front.home')->name('home');
 Route::livewire('/login', 'front.auth.login')->name('login');
 Route::livewire('/register', 'front.auth.register')->name('register');
 
+Route::livewire('/shoping-cart', 'shopping-cart')->name('shopping-cart');
+
 Route::middleware('auth')->group(function(){
 
     Route::prefix('dashboard')->name('dashboard.')->group(function(){
@@ -18,8 +20,6 @@ Route::middleware('auth')->group(function(){
         Route::livewire('/product-stocks', 'dashboard.stock')->name('stocks');
         Route::livewire('/suppliers', 'dashboard.supplier')->name('suppliers');
     });
-
-    Route::livewire('/shoping-cart', 'shopping-cart')->name('shopping-cart');
 
     Route::get('logout', function(){
         Auth::logout(); 
