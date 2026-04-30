@@ -15,6 +15,7 @@ Route::middleware('auth')->group(function(){
     Route::prefix('dashboard')->name('dashboard.')->group(function(){
         Route::livewire('/', 'dashboard.home')->name('home');
         Route::livewire('/categories', 'dashboard.category')->name('categories');
+        Route::livewire('/categories/{category}', 'dashboard.category.view')->name('categories.view');
         Route::livewire('/products', 'dashboard.product')->name('products');
         Route::livewire('/products/{product}', 'dashboard.product.view')->name('products.view');
         Route::livewire('/product-stocks', 'dashboard.stock')->name('stocks');
