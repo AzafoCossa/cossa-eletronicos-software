@@ -20,7 +20,7 @@ class CategorySeeder extends Seeder
             ['name' => 'Eletrônicos', 'parent_id' => null],
             ['name' => 'Eletrodomésticos', 'parent_id' => null],
             [
-                'name' => 'Samartphones',
+                'name' => 'Smartphones',
                 'parent_id' => 1
             ],
             [
