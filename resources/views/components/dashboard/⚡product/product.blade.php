@@ -53,6 +53,7 @@
         <!-- FORMULÁRIO DE ADIÇÃO DE Productos -->
         <div x-show="showProductForm" class="w-2xl mt-5">
             <form wire:submit.prevent="saveProduct">
+                @csrf
                 <div class="text-sm text-danger mb-5">
                     @error('product_error') {{$message}} @enderror
                 </div>
