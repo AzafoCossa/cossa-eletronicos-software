@@ -34,7 +34,7 @@ if(!function_exists("isEmail")){
 }
 
 if(!function_exists('transformString')){
-    function transformString(String $value, $n = 120)
+    function transformString(?String $value, $n = 120)
     {
         if ($n) {
             return Str::length($value) > $n ? Str::substr($value, 0, $n - 1) . "..." : $value;
