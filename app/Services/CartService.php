@@ -163,7 +163,7 @@ class CartService
                 'quantity' => $item->quantity,
                 'price' => $item->price,
                 'total_price' => $item->quantity * $item->price,
-                'image' => $item->variant->images ?? $item->variant->product->images->first()->path,
+                'image' => $item->variant->product->images->first()->path,
                 'in_stock' => $item->variant->stock >= $item->quantity,
             ];
         });
