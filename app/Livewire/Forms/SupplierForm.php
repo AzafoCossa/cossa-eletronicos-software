@@ -8,10 +8,10 @@ use Livewire\Form;
 
 class SupplierForm extends Form
 {
-    public ?string $name;
-    public ?int $block;
-    public ?string $address;
-    public ?string $description;
+    public ?string $name = null;
+    public ?int $block = null;
+    public ?string $address = null;
+    public ?string $description = null;
 
     public function save(){
         $this->validate([
