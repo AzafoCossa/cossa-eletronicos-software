@@ -4,9 +4,9 @@ use App\Models\Product;
 use App\Models\ProductVariant;
 use App\Services\CartService;
 use App\Traits\ShowMessage;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use League\Uri\Builder;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -40,6 +40,8 @@ new class extends Component
     }
 
     private function getProducts(){
-        return Product::with('variant')->get();
+        return Product::whereHas('variant', function(Builder $query){
+            $query->where('stock', '>', 0);
+        })->get();
     }
 };
