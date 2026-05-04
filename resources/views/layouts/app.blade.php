@@ -12,7 +12,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @stack('styles')
 
-        @if(app()->envirnment('production'))
+        @if(app()->environment('production'))
             <!-- Google tag (gtag.js) -->
             <script async src="https://www.googletagmanager.com/gtag/js?id=G-X0WJ87JT00"></script>
             <script>
