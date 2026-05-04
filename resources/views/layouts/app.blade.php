@@ -11,6 +11,19 @@
         <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}" />
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @stack('styles')
+
+        @if(app()->envirnment('production'))
+            <!-- Google tag (gtag.js) -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-X0WJ87JT00"></script>
+            <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-X0WJ87JT00');
+            </script>
+            <!-- End Google Tag Manager -->
+        @endif
     </head>
     <body class="font-family">
         {{ $slot }}
