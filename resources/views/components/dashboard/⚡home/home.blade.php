@@ -195,7 +195,7 @@
                                         {{ $district->province->name }}
                                     </td>
                                     <td class="p-2.5">
-                                        {{ $district->covered ? 'Sim' : 'Não' }}
+                                        {{ $district->is_covared ? 'Sim' : 'Não' }}
                                     </td>
                                 </tr>
                                 @endforeach
