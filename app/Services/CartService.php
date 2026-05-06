@@ -178,7 +178,7 @@ class CartService
             'delivery_tax' => 0,
             'tax' => $tax->formatToLocale('pt_PT'),
             'subtotal' => $subtotal->formatToLocale('pt_PT'),
-            'total' => moneyFromCents($this->cart->subtotal),
+            'total' => $this->cart->subtotal,
             'total_items' => $this->cart->total_items,
             'cart_id' => $this->cart->id,
         ];
