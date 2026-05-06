@@ -18,6 +18,15 @@ new class extends Component
         $this->cart = $this->cartService->getCart();
     }
 
+    public function finalizePurchase()
+    {
+        if($this->cart['items']->isEmpty()){
+            $this->showMessage(type:'error', message:'Coloque alguns items no cesto para proceguir.');
+            return;
+        }
+        return redirect()->route('shipping-address');
+    }
+
     public function addItem(CartItem $item){
         try{
             $this->cartService->addItem($item->product_variant_id);

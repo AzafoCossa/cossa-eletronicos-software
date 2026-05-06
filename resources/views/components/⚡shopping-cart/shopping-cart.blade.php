@@ -51,10 +51,10 @@
                 <li class="flex justify-between items-center py-2"><p>Taxa de envio</p><span class="text-black">00,00 MZN</span></li>
                 <li class="flex justify-between items-center py-2"><p>IVA</p><span class="text-black">{{ $cart['tax'] }}</span></li>
                 <li class="flex justify-between items-center py-2"><p>Subtotal</p><span class="text-black">{{ $cart['subtotal']}}</span></li>
-                <li class="flex justify-between items-center py-2"><p>Total</p><span class="text-black">{{ $cart['total'] }}</span></li>
+                <li class="flex justify-between items-center py-2"><p>Total</p><span class="text-black">{{ moneyFromCents($cart['total']) }}</span></li>
               </ul>
             </div>
-            <button class="bg-primary mt-10 rounded-xl uppercase text-white py-5 text-lg font-semibold cursor-pointer">Finalizar a compra</button>
+            <button wire:click="finalizePurchase" type="button" class="bg-primary mt-10 rounded-xl uppercase text-white py-5 text-lg font-semibold cursor-pointer">Finalizar a compra</button>
           </div>
         </div>
       </div>
