@@ -52,6 +52,7 @@
                             placeholder: "Selecione uma opção",
                             dropdownParent: $this.parent(),
                             width: '100%',
+                            allowClear: true,
                         });
                     });
                 }
