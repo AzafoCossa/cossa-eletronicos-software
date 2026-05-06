@@ -8,7 +8,7 @@ trait ShowMessage
     public string $messageType = 'success';
     public string $message = '';
 
-    private function showMessage(string $type, string $message){
+    private function showMessage(string $message, string $type = 'success'){
         $this->dispatch('show-message', message: $message, type: $type);
     }
 }
