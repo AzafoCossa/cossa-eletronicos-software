@@ -31,7 +31,7 @@ class StockForm extends Form
         if($stock->save()){
 
             $variant = ProductVariant::where('id', $this->variant)->first();
-            $variant->stock = $stock->total_quantity;
+            $variant->stock += $stock->total_quantity;
             $variant->price = $this->sale_price * 100;
             $variant->save();
 
