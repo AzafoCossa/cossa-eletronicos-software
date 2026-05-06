@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('full_name');
             $table->string('email')->nullable();
             $table->string('block');
+            $table->string('phone_number');
             $table->foreignIdFor(District::class)->constrained()->cascadeOnUpdate();
             $table->foreignIdFor(User::class);
             $table->timestamps();
