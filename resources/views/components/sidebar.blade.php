@@ -48,6 +48,11 @@
             Fornecedores
             </a>
         </li>
+        <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.districts') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
+            <a href="{{ route('dashboard.districts') }}" class="flex gap-2.5">
+            Distritos/Cidades
+            </a>
+        </li>
         </ul>
         <ul class="flex flex-col mb-4 w-full px-5 text-white">
         <li  class="p-2.5 rounded-md mt-2.5 bg-white/19 hover:bg-white/30 transition-al duration-300">
