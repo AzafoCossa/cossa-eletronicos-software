@@ -36,7 +36,7 @@
                                 {{ $stockBatch->variant->product->name }} {{ $stockBatch->variant->name }}
                             </td>
                             <td class="p-2.5">
-                                {{ $stockBatch->cost_price/100 }}
+                                {{ moneyFromCents($stockBatch->cost_price) }}
                             </td>
                             <td class="p-2.5">
                                 {{ $stockBatch->total_quantity }}
