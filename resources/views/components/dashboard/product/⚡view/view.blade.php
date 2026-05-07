@@ -44,7 +44,7 @@
                                         {{transformString($product->variant->description) }}
                                     </td>
                                     <td class="p-2.5">
-                                        {{$variant->price/100 }}
+                                        {{moneyFromCents($variant->price) }}
                                     </td>
                                     <td class="p-2.5">
                                         {{$product->category->name }}
