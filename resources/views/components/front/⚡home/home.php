@@ -2,6 +2,7 @@
 
 use App\Models\Product;
 use App\Models\ProductVariant;
+use App\Models\SearchTerm;
 use App\Services\CartService;
 use App\Traits\ShowMessage;
 use Illuminate\Database\Eloquent\Builder;
@@ -16,6 +17,7 @@ new class extends Component
 
     private CartService $cartService;
 
+    public string $search_term = '';
     public $products = [];
     
     public function boot(
@@ -26,6 +28,41 @@ new class extends Component
 
     public function mount(){
         $this->products = $this->getProducts();
+    }
+
+    public function searchProducts(){
+        $term = trim($this->search_term);
+        $terms = collect(' ', $term)->filter();
+
+        $searchedProducts = Product::query()
+            ->whereHas('variants', function (Builder $query) use($terms) {
+
+                foreach($terms as $word){
+                    $query->where(function($subQuery) use ($word) {
+                        $subQuery->where('full_name', 'LIKE', "%{$word}%")
+                            ->orWhere('description', 'LIKE', "%{$word}%");
+                    });
+                }
+
+                $query->where('stock', '>', 0);
+            })->get();
+
+        $search = SearchTerm::firstOrCreate(
+            ['term' => strtolower($term)],
+            [
+                'results_count' => $searchedProducts->count(),
+                'last_searched_at' => now(),
+            ]
+        );
+
+        $search->increment('search_count');
+
+        $search->update([
+            'results_count' => $searchedProducts->count(),
+            'last_searched_at' => now(),
+        ]);
+
+        $this->products = $searchedProducts;
     }
 
     public function addToCart($product){
