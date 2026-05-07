@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\Product;
 use App\Models\ProductVariant;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
@@ -32,6 +33,8 @@ class ProductVariantForm extends Form
             ]
         );
 
+        $parentProduct = Product::findOrFail($this->product);
+
         $variant = new ProductVariant();
         $variant->name = $this->name;
         $variant->description = $this->description;
@@ -40,6 +43,7 @@ class ProductVariantForm extends Form
         $variant->is_new = $this->is_new;
         $variant->color = $this->color;
         $variant->sku = $this->sku;
+        $variant->full_name = $parentProduct->name .' '.$this->name;
 
         if($variant->save()){
             $this->reset();
