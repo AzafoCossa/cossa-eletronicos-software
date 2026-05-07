@@ -32,20 +32,13 @@ new class extends Component
 
     public function searchProducts(){
         $term = trim($this->search_term);
-        $terms = collect(' ', $term)->filter();
 
         $searchedProducts = Product::query()
-            ->whereHas('variants', function (Builder $query) use($terms) {
-
-                foreach($terms as $word){
-                    $query->where(function($subQuery) use ($word) {
-                        $subQuery->where('full_name', 'LIKE', "%{$word}%")
-                            ->orWhere('description', 'LIKE', "%{$word}%");
-                    });
-                }
-
-                $query->where('stock', '>', 0);
-            })->get();
+            ->whereHas('variants', function (Builder $query) use($term) {
+                $query->where('stock', '>', 0)
+                ->where('full_name', 'LIKE', "%{$term}%")
+                ->orWhere('description', 'LIKE', "%{$term}%");
+            })->get(); 
 
         $search = SearchTerm::firstOrCreate(
             ['term' => strtolower($term)],
