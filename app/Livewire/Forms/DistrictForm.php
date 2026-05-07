@@ -32,4 +32,24 @@ class DistrictForm extends Form
 
         return false;
     }
+
+    public function update(){
+        $this->validate([
+            'province' => 'required|exists:provinces,id',
+            'name' => 'required|string|max:255',
+            'is_covered' => 'nullable|boolean',
+        ]);
+        
+        $district = District::findOrFail($this->id);
+        $district->province_id = $this->province;
+        $district->name = $this->name;
+        $district->is_covared = $this->is_covered;
+        
+        if($district->update()){
+            $this->reset();
+            return true;
+        }
+
+        return false;
+    }
 }

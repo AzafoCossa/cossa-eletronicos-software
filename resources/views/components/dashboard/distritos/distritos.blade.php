@@ -1,5 +1,5 @@
 <x-layouts.dashboard>
-    <div x-data="{openDistrictModal: false}">
+    <div x-data="{openDistrictModal: @entangle('openDistrictModal')}">
         <div class="flex w-full gap-2.5 my-5">
             <button @click="openDistrictModal = true" class="flex gap-2.5 px-8 py-2.5 text-white bg-gray-600 rounded-xl cursor-pointer text-lg items-center">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,8 +30,8 @@
                     </thead>
                     <tbody class="text-base text-gray-600">
                         @foreach($districts as $district)
-                        <tr
-                            class="border-b border-gray-200 hover:bg-gray-200"
+                        <tr wire:click="editDistrict({{$district}})"
+                            class="border-b border-gray-200 hover:bg-gray-200 cursor-pointer"
                         >
                             <td class="p-2.5 flex items-center gap-2.5">
                                 <p>{{ $loop->index+1 }}</p>
@@ -66,11 +66,11 @@
             >
                 <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                     <h3 class="text-lg font-medium leading-6 text-gray-900 border-b-2 border-dark/30 pb-2">
-                        Adicionar distrito
+                        {{$editMode ? 'Atualizar' : 'Adicionar'}} distrito
                     </h3>
 
                     <div class="mt-10">
-                        <form wire:submit.prevent="saveDistrict">
+                        <form wire:submit.prevent="{{$editMode ? 'updateDistrict' : 'saveDistrict'}}">
                             <div class="flex flex-col">
                                 <label for="provinceName">Selecione a provincia</label>
                                 <select wire:model="districtForm.province" id="provinceName" class="bg-gray-200 px-5 py-4 @error('districtForm.province') border-2 border-danger @enderror">
@@ -106,7 +106,7 @@
                                 <button type="submit"
                                     class="inline-flex justify-center px-8 py-2.5 text-white bg-primary rounded hover:bg-primary/90 cursor-pointer"
                                 >
-                                    Salvar
+                                    {{$editMode ? 'Atualizar' : 'Salvar'}}
                                 </button>
                             </div>
                         </form>
