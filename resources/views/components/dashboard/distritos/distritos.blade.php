@@ -1,5 +1,5 @@
 <x-layouts.dashboard>
-    <div x-data="{openDistrictModal: @entangle('openDistrictModal')}">
+    <div class="p-5" x-data="{openDistrictModal: @entangle('openDistrictModal')}">
         <div class="flex w-full gap-2.5 my-5">
             <button @click="openDistrictModal = true" class="flex gap-2.5 px-8 py-2.5 text-white bg-gray-600 rounded-xl cursor-pointer text-lg items-center">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
