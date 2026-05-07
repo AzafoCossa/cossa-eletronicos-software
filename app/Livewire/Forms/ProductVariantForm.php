@@ -53,4 +53,38 @@ class ProductVariantForm extends Form
         return false;
     }
 
+    public function update(){
+        $this->validate(
+            [        
+                'id' => 'required|int',    
+                'supplier' => 'nullable|exists:suppliers,id',
+                'name' => 'required|string',
+                'description' => 'nullable|string',
+                'price' => 'nullable|int',
+                'sku' => 'nullable|string',
+                'color' => 'nullable|string',
+                'product' => 'required|exists:products,id',
+            ]
+        );
+
+        $parentProduct = Product::findOrFail($this->product);
+
+        $variant = ProductVariant::findOrFail($this->id);
+        $variant->name = $this->name;
+        $variant->description = $this->description;
+        $variant->product_id = $this->product;
+        $variant->supplier_id = $this->supplier;
+        $variant->is_new = $this->is_new;
+        $variant->color = $this->color;
+        $variant->sku = $this->sku;
+        $variant->full_name = $parentProduct->name .' '.$this->name;
+
+        if($variant->update()){
+            $this->reset();
+            return true;
+        }
+
+        return false;
+    }
+
 }

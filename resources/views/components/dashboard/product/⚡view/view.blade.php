@@ -31,7 +31,7 @@
                             </thead>
                             <tbody class="text-base text-gray-600">
                                 @foreach($product->variants as $variant)
-                                <tr
+                                <tr wire:click="editVariant({{$variant}})"
                                     class="border-b border-gray-200 hover:bg-gray-200 cursor-pointer"
                                 >
                                     <td class="p-2.5 flex items-center gap-2.5">
@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            <form x-show="showVariantForm" wire:submit.prevent="saveVariant" class="mt-5 w-full max-w-2xl">
+            <form x-show="showVariantForm" wire:submit.prevent="{{$editMode ? 'updateVariant' : 'saveVariant' }}" class="mt-5 w-full max-w-2xl">
                 <div>
                     <label for="name">Nome do produto</label>
                     <input type="text" class="form-control mt-2.5" value="{{$product->name}}" readonly>
