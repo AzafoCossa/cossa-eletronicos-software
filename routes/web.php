@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function(){
         Route::livewire('/products/{product}', 'dashboard.product.view')->name('products.view');
         Route::livewire('/product-stocks', 'dashboard.stock')->name('stocks');
         Route::livewire('/suppliers', 'dashboard.supplier')->name('suppliers');
+        Route::livewire('/users', 'dashboard.users')->name('users');
     });
 
     Route::get('logout', function(){
