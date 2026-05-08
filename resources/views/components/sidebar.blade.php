@@ -7,60 +7,65 @@
     <div class="sidebar_links flex flex-col items-center justify-between h-9/10">
         <ul class="flex flex-col mt-10 w-full px-5 text-white">
             @if(auth()->user()->hasAnyRole(['Admin', 'Manager']))
-        <li class="p-2.5 rounded-md {{ request()->routeIs('dashboard.home') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
-            <a href="{{ route('dashboard.home') }}" class="flex gap-2.5">
-            <span class="icon">
-                <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10.5401 9.375V0.648438C10.5401 0.296875 10.8114 0 11.1601 0C15.9536 0 19.8402 3.91797 19.8402 8.75C19.8402 9.10156 19.5457 9.375 19.197 9.375H10.5401ZM0 10.625C0 5.88672 3.49141 1.96484 8.02134 1.33984C8.37784 1.28906 8.6801 1.57812 8.6801 1.94141V11.25L14.7445 17.3633C15.0042 17.625 14.9848 18.0547 14.6864 18.2656C13.1674 19.3594 11.3074 20 9.3001 20C4.16567 20 0 15.8047 0 10.625ZM20.3982 11.25C20.7586 11.25 21.0415 11.5547 20.995 11.9141C20.6966 14.0977 19.6542 16.0391 18.1313 17.4727C17.8988 17.6914 17.5346 17.6758 17.3098 17.4453L11.1601 11.25H20.3982Z" fill="white"/>
-                </svg>
-            </span>
-            <p class="hidden lg:block">Dashboard</p>
-            </a>
-        </li>
+            <li class="p-2.5 rounded-md {{ request()->routeIs('dashboard.home') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
+                <a href="{{ route('dashboard.home') }}" class="flex gap-2.5">
+                <span class="icon">
+                    <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.5401 9.375V0.648438C10.5401 0.296875 10.8114 0 11.1601 0C15.9536 0 19.8402 3.91797 19.8402 8.75C19.8402 9.10156 19.5457 9.375 19.197 9.375H10.5401ZM0 10.625C0 5.88672 3.49141 1.96484 8.02134 1.33984C8.37784 1.28906 8.6801 1.57812 8.6801 1.94141V11.25L14.7445 17.3633C15.0042 17.625 14.9848 18.0547 14.6864 18.2656C13.1674 19.3594 11.3074 20 9.3001 20C4.16567 20 0 15.8047 0 10.625ZM20.3982 11.25C20.7586 11.25 21.0415 11.5547 20.995 11.9141C20.6966 14.0977 19.6542 16.0391 18.1313 17.4727C17.8988 17.6914 17.5346 17.6758 17.3098 17.4453L11.1601 11.25H20.3982Z" fill="white"/>
+                    </svg>
+                </span>
+                <p class="hidden lg:block">Dashboard</p>
+                </a>
+            </li>
 
-        <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.users') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
-            <a href="{{ route('dashboard.users') }}" class="flex gap-2.5">
-            Clientes
-            </a>
-        </li>
-        <li class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.stocks*') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
-            <a href="{{ route('dashboard.stocks') }}" class="flex gap-2.5">
-            <x-icons.stock fill="#fff"/>
-            Estoque de produtos
-            </a>
-        </li>
-        <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.products*') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
-            <a href="{{ route('dashboard.products') }}" class="flex gap-2.5">
-            <span class="icon">
-                <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1.71973 0.397404C1.83432 0.123179 2.08643 -0.0341632 2.34236 0.00629625L11.6933 1.38192L21.0442 0.00629625C21.3001 -0.0296677 21.5523 0.127674 21.6668 0.397404L23.2597 4.14665C23.6035 4.95134 23.2368 5.92686 22.5034 6.17411L16.2618 8.27351C15.7308 8.45333 15.1617 8.18809 14.879 7.63065L11.6933 1.38192L8.50756 7.63065C8.22489 8.18809 7.65573 8.45333 7.12478 8.27351L0.887007 6.17411C0.149781 5.92686 -0.213102 4.95134 0.130682 4.14665L1.71973 0.397404ZM11.7353 4.25903L13.8324 8.36791C14.4015 9.48279 15.536 10.0133 16.6018 9.65362L21.472 8.01726V15.5247C21.472 16.5137 20.8991 17.3769 20.0816 17.6196L12.2854 19.9123C11.8957 20.0292 11.487 20.0292 11.1012 19.9123L3.30496 17.6196C2.48751 17.3724 1.91454 16.5092 1.91454 15.5202V8.01277L6.78863 9.65362C7.85055 10.0133 8.98885 9.48279 9.55801 8.36791L11.6513 4.25903H11.7353Z" fill="white"/>
-                </svg>
-            </span>
-            Produtos
-            </a>
-        </li>
-        <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.categories*') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
-            <a href="{{ route('dashboard.categories') }}" class="flex gap-2.5">
-            <x-icons.category fill="#fff"/>
-            Categorias
-            </a>
-        </li>
-        <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.suppliers') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
-            <a href="{{ route('dashboard.suppliers') }}" class="flex gap-2.5">
-            <span class="icon">
-                <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 1.25C0 0.558594 0.477172 0 1.0678 0H1.60169C3.07659 0 4.27119 1.39844 4.27119 3.125V14.375C4.27119 14.7188 4.51144 15 4.80508 15H20.2881C20.8788 15 21.3559 15.5586 21.3559 16.25C21.3559 16.9414 20.8788 17.5 20.2881 17.5H18.0624C18.1225 17.6953 18.1525 17.9062 18.1525 18.125C18.1525 19.1602 17.4351 20 16.5508 20C15.6666 20 14.9492 19.1602 14.9492 18.125C14.9492 17.9062 14.9825 17.6953 15.0392 17.5H8.45228C8.51234 17.6953 8.54237 17.9062 8.54237 18.125C8.54237 19.1602 7.82495 20 6.94068 20C6.05641 20 5.33898 19.1602 5.33898 18.125C5.33898 17.9062 5.37235 17.6953 5.42908 17.5H4.80508C3.33019 17.5 2.13559 16.1016 2.13559 14.375V3.125C2.13559 2.78125 1.89534 2.5 1.60169 2.5H1.0678C0.477172 2.5 0 1.94141 0 1.25ZM14.4153 3.75V2.1875C14.4153 2.01562 14.2951 1.875 14.1483 1.875H11.4788C11.332 1.875 11.2119 2.01562 11.2119 2.1875V3.75H14.4153ZM9.61017 3.75V2.1875C9.61017 0.980469 10.4477 0 11.4788 0H14.1483C15.1794 0 16.0169 0.980469 16.0169 2.1875V3.75V12.5H9.61017V3.75ZM17.0847 12.5V3.75H17.6186C18.5029 3.75 19.2203 4.58984 19.2203 5.625V10.625C19.2203 11.6602 18.5029 12.5 17.6186 12.5H17.0847ZM8.00847 3.75H8.54237V12.5H8.00847C7.12421 12.5 6.40678 11.6602 6.40678 10.625V5.625C6.40678 4.58984 7.12421 3.75 8.00847 3.75Z" fill="white"/>
-                </svg>
-            </span>
-            Fornecedores
-            </a>
-        </li>
-        <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.districts') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
-            <a href="{{ route('dashboard.districts') }}" class="flex gap-2.5">
-            Distritos/Cidades
-            </a>
-        </li>
+            <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.users') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
+                <a href="{{ route('dashboard.users') }}" class="flex gap-2.5">
+                Clientes
+                </a>
+            </li>
+            <li class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.stocks*') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
+                <a href="{{ route('dashboard.stocks') }}" class="flex gap-2.5">
+                <x-icons.stock fill="#fff"/>
+                Estoque de produtos
+                </a>
+            </li>
+            <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.products*') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
+                <a href="{{ route('dashboard.products') }}" class="flex gap-2.5">
+                <span class="icon">
+                    <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.71973 0.397404C1.83432 0.123179 2.08643 -0.0341632 2.34236 0.00629625L11.6933 1.38192L21.0442 0.00629625C21.3001 -0.0296677 21.5523 0.127674 21.6668 0.397404L23.2597 4.14665C23.6035 4.95134 23.2368 5.92686 22.5034 6.17411L16.2618 8.27351C15.7308 8.45333 15.1617 8.18809 14.879 7.63065L11.6933 1.38192L8.50756 7.63065C8.22489 8.18809 7.65573 8.45333 7.12478 8.27351L0.887007 6.17411C0.149781 5.92686 -0.213102 4.95134 0.130682 4.14665L1.71973 0.397404ZM11.7353 4.25903L13.8324 8.36791C14.4015 9.48279 15.536 10.0133 16.6018 9.65362L21.472 8.01726V15.5247C21.472 16.5137 20.8991 17.3769 20.0816 17.6196L12.2854 19.9123C11.8957 20.0292 11.487 20.0292 11.1012 19.9123L3.30496 17.6196C2.48751 17.3724 1.91454 16.5092 1.91454 15.5202V8.01277L6.78863 9.65362C7.85055 10.0133 8.98885 9.48279 9.55801 8.36791L11.6513 4.25903H11.7353Z" fill="white"/>
+                    </svg>
+                </span>
+                Produtos
+                </a>
+            </li>
+            <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.categories*') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
+                <a href="{{ route('dashboard.categories') }}" class="flex gap-2.5">
+                <x-icons.category fill="#fff"/>
+                Categorias
+                </a>
+            </li>
+            <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.suppliers') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
+                <a href="{{ route('dashboard.suppliers') }}" class="flex gap-2.5">
+                <span class="icon">
+                    <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 1.25C0 0.558594 0.477172 0 1.0678 0H1.60169C3.07659 0 4.27119 1.39844 4.27119 3.125V14.375C4.27119 14.7188 4.51144 15 4.80508 15H20.2881C20.8788 15 21.3559 15.5586 21.3559 16.25C21.3559 16.9414 20.8788 17.5 20.2881 17.5H18.0624C18.1225 17.6953 18.1525 17.9062 18.1525 18.125C18.1525 19.1602 17.4351 20 16.5508 20C15.6666 20 14.9492 19.1602 14.9492 18.125C14.9492 17.9062 14.9825 17.6953 15.0392 17.5H8.45228C8.51234 17.6953 8.54237 17.9062 8.54237 18.125C8.54237 19.1602 7.82495 20 6.94068 20C6.05641 20 5.33898 19.1602 5.33898 18.125C5.33898 17.9062 5.37235 17.6953 5.42908 17.5H4.80508C3.33019 17.5 2.13559 16.1016 2.13559 14.375V3.125C2.13559 2.78125 1.89534 2.5 1.60169 2.5H1.0678C0.477172 2.5 0 1.94141 0 1.25ZM14.4153 3.75V2.1875C14.4153 2.01562 14.2951 1.875 14.1483 1.875H11.4788C11.332 1.875 11.2119 2.01562 11.2119 2.1875V3.75H14.4153ZM9.61017 3.75V2.1875C9.61017 0.980469 10.4477 0 11.4788 0H14.1483C15.1794 0 16.0169 0.980469 16.0169 2.1875V3.75V12.5H9.61017V3.75ZM17.0847 12.5V3.75H17.6186C18.5029 3.75 19.2203 4.58984 19.2203 5.625V10.625C19.2203 11.6602 18.5029 12.5 17.6186 12.5H17.0847ZM8.00847 3.75H8.54237V12.5H8.00847C7.12421 12.5 6.40678 11.6602 6.40678 10.625V5.625C6.40678 4.58984 7.12421 3.75 8.00847 3.75Z" fill="white"/>
+                    </svg>
+                </span>
+                Fornecedores
+                </a>
+            </li>
+            <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.districts') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
+                <a href="{{ route('dashboard.districts') }}" class="flex gap-2.5">
+                Distritos/Cidades
+                </a>
+            </li>
             @endif
+            <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.orders') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
+                <a href="{{ route('dashboard.orders') }}" class="flex gap-2.5">
+                Ordens/Pedidos
+                </a>
+            </li>
         </ul>
         <ul class="flex flex-col mb-4 w-full px-5 text-white">
         <li  class="p-2.5 rounded-md mt-2.5 bg-white/19 hover:bg-white/30 transition-al duration-300">
