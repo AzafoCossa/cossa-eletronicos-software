@@ -15,7 +15,7 @@ Route::middleware('auth')->group(function(){
     Route::livewire('/shipping-address', 'front.shipping-address')->name('shipping-address');
     Route::livewire('order-success', 'front.order-placed')->name('order-success');
     
-    Route::prefix('dashboard')->name('dashboard.')->group(function(){
+    Route::middleware('role:Admin|Manager')->prefix('dashboard')->name('dashboard.')->group(function(){
         Route::livewire('/', 'dashboard.home')->name('home');
         Route::livewire('/categories', 'dashboard.category')->name('categories');
         Route::livewire('/categories/{category}', 'dashboard.category.view')->name('categories.view');
