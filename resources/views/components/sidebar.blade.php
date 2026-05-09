@@ -6,7 +6,7 @@
 
     <div class="sidebar_links flex flex-col items-center justify-between h-9/10">
         <ul class="flex flex-col mt-10 w-full px-5 text-white">
-            @if(auth()->user()->hasAnyRole(['Admin', 'Manager']))
+            @role(['Admin', 'Manager'])
             <li class="p-2.5 rounded-md {{ request()->routeIs('dashboard.home') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
                 <a href="{{ route('dashboard.home') }}" class="flex gap-2.5">
                 <span class="icon">
@@ -60,7 +60,7 @@
                 Distritos/Cidades
                 </a>
             </li>
-            @endif
+            @endrole
             <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.orders') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
                 <a href="{{ route('dashboard.orders') }}" class="flex gap-2.5">
                 Ordens/Pedidos
