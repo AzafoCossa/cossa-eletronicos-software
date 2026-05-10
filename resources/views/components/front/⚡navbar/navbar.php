@@ -14,7 +14,7 @@ new class extends Component
         $this->cartCount = $this->cartService->getCartCount();
     }
 
-    #[On('added-to-cart')]
+    #[On('cart-updated')]
     public function addedToCart(){
         return $this->cartCount = $this->cartService->getCartCount();
     }

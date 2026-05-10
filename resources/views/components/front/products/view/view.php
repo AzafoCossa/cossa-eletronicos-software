@@ -23,7 +23,7 @@ new class extends Component
         try{
             $this->cartService->addItem($product['id']);
             $this->showMessage(type: 'success', message: 'O produto foi adicionado ao carrinho!');
-            $this->dispatch('added-to-cart');
+            $this->dispatch('cart-updated');
         }catch(\Exception $e){
             Log::error("Nao foi possivel adicionar item ao stock: {$e}");
             $this->showMessage(type: 'error', message: 'Nao foi possivel adcionar item ao carrinho!');

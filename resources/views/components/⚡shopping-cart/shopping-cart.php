@@ -32,6 +32,7 @@ new class extends Component
             $this->cartService->addItem($item->product_variant_id);
             $this->showMessage(type:'success', message:'Item atualizado com sucesso');
             $this->cart = $this->cartService->getCart();
+            $this->dispatch('cart-updated');
         }catch(\Exception $e){
             $this->showMessage(type:'error', message:'Nao foi possivel acrescentar a quantidade');
         }
@@ -47,7 +48,7 @@ new class extends Component
             $this->cartService->updateItem($cartItem['id'], $qty);
 
             $this->showMessage(type:'success', message:'O item foi removido');
-
+            $this->dispatch('cart-updated');
             return $this->cart = $this->cartService->getCart();
         }else{
             $item = CartItem::where('id', $cartItem['id'])->first();
@@ -63,6 +64,7 @@ new class extends Component
         $this->cartService->updateItem($cartItem['id'], -1);
         $this->showMessage(type:'success', message:'Item removido com sucesso');
         $this->cart = $this->cartService->getCart();
+        $this->dispatch('cart-updated');
     }
 
     public function boot(

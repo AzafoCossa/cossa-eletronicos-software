@@ -49,10 +49,5 @@
 </nav>
 @script
     <script>
-        $(document).ready(function(){
-            Livewire.on('added-to-cart', function(){
-                
-            });
-        });
     </script>
 @endscript
