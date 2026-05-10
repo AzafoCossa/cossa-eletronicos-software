@@ -8,6 +8,7 @@ Route::livewire('/', 'front.home')->name('home');
 Route::livewire('/login', 'front.auth.login')->name('login');
 Route::livewire('/register', 'front.auth.register')->name('register');
 
+Route::livewire('/products/{product}', 'front.products.view')->name('products.view');
 Route::livewire('/shoping-cart', 'shopping-cart')->name('shopping-cart');
 
 Route::middleware('auth')->group(function(){
