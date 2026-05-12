@@ -14,7 +14,7 @@
                     <img src="storage/{{ $item['image'] }}" alt="Laptop" class="rounded-xl w-auto h-25 aspect-3/2 object-cover">
                     <div class="max-w-64">
                       <h2 class="font-semibold text-base">{{ $item['name'] }}</h2>
-                      <p class="mt-2.5">{{ $item['description'] }}</p>
+                      <p class="mt-2.5">{{ transformString($item['description'], 85) }}</p>
                     </div>
                   </div>
                   <div class="bg-cream/56 rounded-xl flex gap-3 text-base text-black">
