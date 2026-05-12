@@ -15,6 +15,7 @@ Route::middleware('auth')->group(function(){
     
     Route::livewire('/shipping-address', 'front.shipping-address')->name('shipping-address');
     Route::livewire('/orders', 'front.orders')->name('orders');
+    Route::livewire('/orders/{order}', 'front.orders.order')->name('orders.order');
     
     Route::middleware('role:Admin|Manager')->prefix('dashboard')->name('dashboard.')->group(function(){
         Route::livewire('/', 'dashboard.home')->name('home');
