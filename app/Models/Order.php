@@ -25,6 +25,11 @@ class Order extends Model
         return $this->hasMany(Payment::class);
     }
 
+    public function address():BelongsTo
+    {
+        return $this->belongsTo(ShippingAddress::class, 'shipping_address_id');
+    }
+
     public function getPaymentStatusAttribute()
     {
         //pegar a soma dos valores pagos
