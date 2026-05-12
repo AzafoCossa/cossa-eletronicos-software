@@ -27,7 +27,7 @@ new class extends Component
             return redirect()->route('home');
         }
 
-        $this->districts = District::where('is_covared', true)->get();
+        $this->districts = District::all();
         $this->shippingForm->full_name = auth()->user()->full_name;
     }
 
