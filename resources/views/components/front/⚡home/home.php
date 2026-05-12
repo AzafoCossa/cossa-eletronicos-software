@@ -72,6 +72,6 @@ new class extends Component
     private function getProducts(){
         return Product::whereHas('variant', function(Builder $query){
             $query->where('stock', '>', 0);
-        })->get();
+        })->inRandomOrder()->get();
     }
 };
