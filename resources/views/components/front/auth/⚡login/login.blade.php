@@ -1,4 +1,6 @@
-
+@section('title')
+Login
+@endsection
 <div>
     <main class="w-full grid grid-cols-1 xl:grid-cols-2 min-h-screen">
       <div class="flex justify-center items-center bg-white">

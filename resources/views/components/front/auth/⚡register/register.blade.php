@@ -1,4 +1,6 @@
-
+@section('title')
+Registo de conta
+@endsection
 <div>
     <main class="w-full grid grid-cols-1 xl:grid-cols-2 min-h-screen">
       <div id="auth-image-container" class="bg-[url(/src/assets/auth_background.jpg)] bg-no-repeat bg-bottom relative hidden xl:block">
