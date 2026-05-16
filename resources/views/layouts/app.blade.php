@@ -4,10 +4,9 @@
         <meta charset="UTF-8" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>CossaEletronicos | Dashboard</title>
-
-
-
+        <title>Cossa Eletrónicos | @yield('title', 'Página inicial')</title>
+        <meta name="description" content="@yield('page_description', 'Somos uma loja virtual especializada na venda de equipamentos eletrônicos e eletrodomésticos, oferecendo soluções para facilitar seu dia a dia.')">
+        <meta name="keywords" content="Loja Virtual, Comércio Online, Eletrodomésticos, Eletrônicos, Smartphones, Celulares, Tecnologia, Informática, TVs, Fogões, Congeladores, Chaleiras Elétricas, Entrega ao Domicílio, Compras Online, Moçambique, Melhor Preço, Produtos Originais, Entrega Rápida">
         <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}" />
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @stack('styles')

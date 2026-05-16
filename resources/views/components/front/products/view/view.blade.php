@@ -1,4 +1,9 @@
-
+@section('title')
+  {{$product->variant->full_name}}
+@endsection
+@section('page_description')
+{{$product->variant->description}}
+@endsection
 <div>
     <livewire:front.navbar />
     <main class="px-5">
