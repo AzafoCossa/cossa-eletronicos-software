@@ -17,6 +17,11 @@
                 <p class="hidden lg:block">Dashboard</p>
                 </a>
             </li>
+            <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.searches') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
+                <a href="{{ route('dashboard.searches') }}" class="flex gap-2.5">
+                Pesquisas de produtos
+                </a>
+            </li>
 
             <li  class="p-2.5 rounded-md mt-2.5 {{ request()->routeIs('dashboard.users') ? 'bg-primary' : '' }} hover:bg-white/19 transition-al duration-500">
                 <a href="{{ route('dashboard.users') }}" class="flex gap-2.5">

@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function(){
         Route::livewire('/products', 'dashboard.product')->name('products');
         Route::livewire('/products/{product}', 'dashboard.product.view')->name('products.view');
         Route::livewire('/product-stocks', 'dashboard.stock')->name('stocks');
+        Route::livewire('/searches', 'dashboard.searches')->name('searches');
         Route::livewire('/suppliers', 'dashboard.supplier')->name('suppliers');
         Route::livewire('/users', 'dashboard.users')->name('users');
     });
