@@ -33,6 +33,11 @@ new class extends Component
     public function searchProducts(){
         $term = trim($this->search_term);
 
+        if(empty($term)){
+            $this->products = $this->getProducts();
+            return;
+        }
+
         $searchedProducts = Product::query()
             ->whereHas('variants', function (Builder $query) use($term) {
                 $query->where('stock', '>', 0)
